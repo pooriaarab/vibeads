@@ -34,12 +34,14 @@ function render() {
 
   const company = rec.company;
   const speedrunBadge = company.speedrun ? " [Speedrun]" : "";
+  const url = company.website + "?ref=vibeads";
 
+  // Line 1: Company name + one-liner (no duplication)
   console.log(
-    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m -- ${company.statusLineCopy}`
+    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m -- ${company.oneLiner}`
   );
 
-  const url = company.website + "?ref=vibeads";
+  // Line 2: Clickable link using OSC 8 (Cmd+click in iTerm2/Kitty/WezTerm)
   console.log(
     `\x1b[90m  \x1b]8;;${url}\x07${url}\x1b]8;;\x07\x1b[0m`
   );

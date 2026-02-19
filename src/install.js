@@ -91,9 +91,28 @@ export async function init() {
     command: `node ${join(VIBEADS_DIR, "src/statusline.js")}`,
   };
 
+  // Replace spinner verbs with ad copy from portfolio
+  const portfolioPath = join(__dirname, "data/portfolio.json");
+  if (existsSync(portfolioPath)) {
+    const portfolio = JSON.parse(readFileSync(portfolioPath, "utf-8"));
+    const adVerbs = portfolio.companies.map((c) => c.spinnerCopy);
+    // Save original spinnerVerbs so we can restore on uninstall
+    if (settings.spinnerVerbs) {
+      writeFileSync(
+        join(VIBEADS_DIR, "original-spinner-verbs.json"),
+        JSON.stringify(settings.spinnerVerbs)
+      );
+    }
+    settings.spinnerVerbs = {
+      mode: "replace",
+      verbs: adVerbs,
+    };
+  }
+
   // Write settings back
   writeFileSync(CLAUDE_SETTINGS, JSON.stringify(settings, null, 2));
   console.log("  Added hooks to ~/.claude/settings.json");
+  console.log("  Replaced spinner verbs with a16z portfolio ads");
 
   // Create initial config
   const config = {
