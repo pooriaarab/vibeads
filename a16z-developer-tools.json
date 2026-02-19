@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "description": "a16z portfolio companies relevant to developers building software",
+    "lastUpdated": "2026-02-18",
+    "totalCompanies": 25,
+    "sources": [
+      "https://a16z.com/portfolio/",
+      "https://speedrun.a16z.com/companies",
+      "https://a16z.com/investment-list/"
+    ]
+  },
+  "companies": [
+    {
+      "name": "Cursor",
+      "slug": "cursor",
+      "oneLiner": "AI-powered code editor that helps developers write, refactor, and debug code using natural language",
+      "category": "ai-coding",
+      "subcategory": "IDE",
+      "website": "https://www.cursor.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier with 2,000 code completions/month and 50 slow premium model requests",
+      "pricingUrl": "https://www.cursor.com/pricing",
+      "relevantTo": ["frontend", "backend", "fullstack", "ai-ml"],
+      "useCase": "AI-assisted code editing, refactoring, and debugging"
+    },
+    {
+      "name": "Replit",
+      "slug": "replit",
+      "oneLiner": "Cloud-based IDE and deployment platform with AI agent that builds full apps from natural language prompts",
+      "category": "ai-coding",
+      "subcategory": "cloud-ide",
+      "website": "https://replit.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free Starter tier with limited dev time, compute, storage, and basic AI access",
+      "pricingUrl": "https://replit.com/pricing",
+      "relevantTo": ["frontend", "backend", "fullstack", "prototyping"],
+      "useCase": "Browser-based coding, AI app generation, instant deployment"
+    },
+    {
+      "name": "Replicate",
+      "slug": "replicate",
+      "oneLiner": "API platform to run open-source AI models (image, video, audio, text) with zero ML setup",
+      "category": "ai-infrastructure",
+      "subcategory": "model-hosting",
+      "website": "https://replicate.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free credits on signup; pay-per-prediction pricing after",
+      "pricingUrl": "https://replicate.com/pricing",
+      "relevantTo": ["ai-ml", "backend", "creative-tools"],
+      "useCase": "Run open-source AI models via API without managing infrastructure"
+    },
+    {
+      "name": "Fal.ai",
+      "slug": "fal-ai",
+      "oneLiner": "Ultra-fast serverless inference platform for generative AI models (images, video, audio) with sub-second latency",
+      "category": "ai-infrastructure",
+      "subcategory": "inference",
+      "website": "https://fal.ai",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free credits on signup; pay-per-use pricing starting at $0.005/megapixel",
+      "pricingUrl": "https://fal.ai/pricing",
+      "relevantTo": ["ai-ml", "backend", "creative-tools"],
+      "useCase": "Fast AI inference API for image/video/audio generation in production apps"
+    },
+    {
+      "name": "Groq",
+      "slug": "groq",
+      "oneLiner": "Lightning-fast LLM inference powered by custom LPU chips, offering the fastest API for language models",
+      "category": "ai-infrastructure",
+      "subcategory": "inference",
+      "website": "https://groq.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier with limited rate limits for basic testing; Developer tier with 10x limits at 25% discount",
+      "pricingUrl": "https://groq.com/pricing",
+      "relevantTo": ["ai-ml", "backend", "fullstack"],
+      "useCase": "Fastest LLM inference API for building AI-powered applications"
+    },
+    {
+      "name": "ElevenLabs",
+      "slug": "elevenlabs",
+      "oneLiner": "AI voice synthesis and cloning platform with APIs for text-to-speech, voice cloning, and audio generation",
+      "category": "ai-infrastructure",
+      "subcategory": "voice-audio",
+      "website": "https://elevenlabs.io",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier with limited characters per month for text-to-speech",
+      "pricingUrl": "https://elevenlabs.io/pricing",
+      "relevantTo": ["ai-ml", "backend", "creative-tools"],
+      "useCase": "Add realistic AI voices, text-to-speech, and voice cloning to apps"
+    },
+    {
+      "name": "Mistral AI",
+      "slug": "mistral",
+      "oneLiner": "Open-weight and commercial frontier language models with developer-friendly API for building AI applications",
+      "category": "ai-infrastructure",
+      "subcategory": "foundation-models",
+      "website": "https://mistral.ai",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier API access with rate limits; open-weight models available for self-hosting",
+      "pricingUrl": "https://mistral.ai/products/la-plateforme#pricing",
+      "relevantTo": ["ai-ml", "backend", "fullstack"],
+      "useCase": "LLM API and open-weight models for building AI features and agents"
+    },
+    {
+      "name": "Clerk",
+      "slug": "clerk",
+      "oneLiner": "Drop-in authentication and user management for React/Next.js apps with pre-built UI components",
+      "category": "auth",
+      "subcategory": "authentication",
+      "website": "https://clerk.com",
+      "a16zFund": "a16z Seed",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free for up to 10,000 monthly active users",
+      "pricingUrl": "https://clerk.com/pricing",
+      "relevantTo": ["frontend", "backend", "fullstack"],
+      "useCase": "Add authentication, user management, and session handling to web apps"
+    },
+    {
+      "name": "PlanetScale",
+      "slug": "planetscale",
+      "oneLiner": "Serverless MySQL-compatible database platform built on Vitess with branching, non-blocking schema changes, and horizontal sharding",
+      "category": "database",
+      "subcategory": "relational",
+      "website": "https://planetscale.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": false,
+      "freeTierDetails": "Free tier was removed in April 2024; paid plans start at $39/month",
+      "pricingUrl": "https://planetscale.com/pricing",
+      "relevantTo": ["backend", "fullstack", "databases"],
+      "useCase": "Scalable MySQL database with Git-like branching for schema changes"
+    },
+    {
+      "name": "Sourcegraph",
+      "slug": "sourcegraph",
+      "oneLiner": "Universal code search and AI coding assistant (Cody) for navigating and understanding large codebases",
+      "category": "ai-coding",
+      "subcategory": "code-search",
+      "website": "https://sourcegraph.com",
+      "a16zFund": "a16z Growth Fund",
+      "speedrun": false,
+      "hasFreeTier": false,
+      "freeTierDetails": "Cody Free was discontinued in July 2025; replaced by Amp (new AI coding tool)",
+      "pricingUrl": "https://sourcegraph.com/pricing",
+      "relevantTo": ["backend", "fullstack", "devops"],
+      "useCase": "Code search across repositories and AI-powered code understanding"
+    },
+    {
+      "name": "Hex",
+      "slug": "hex",
+      "oneLiner": "Collaborative data science notebooks combining SQL, Python, R, and no-code workflows with interactive data apps",
+      "category": "data",
+      "subcategory": "notebooks",
+      "website": "https://hex.tech",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier for individual use with limited compute and sharing",
+      "pricingUrl": "https://hex.tech/pricing",
+      "relevantTo": ["data-science", "ai-ml", "analytics"],
+      "useCase": "Build and share data analyses, dashboards, and interactive data apps"
+    },
+    {
+      "name": "Stainless",
+      "slug": "stainless",
+      "oneLiner": "Automated SDK generation platform that creates type-safe, polished client libraries from your API in minutes",
+      "category": "developer-tools",
+      "subcategory": "sdk-generation",
+      "website": "https://www.stainlessapi.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier available for open-source projects",
+      "pricingUrl": "https://www.stainlessapi.com/pricing",
+      "relevantTo": ["backend", "api-development", "devops"],
+      "useCase": "Auto-generate and maintain SDKs in TypeScript, Python, Go, Java, and more from your API spec"
+    },
+    {
+      "name": "Arcjet",
+      "slug": "arcjet",
+      "oneLiner": "Developer security SDK for Next.js, Node.js, and Bun with bot detection, rate limiting, and attack protection",
+      "category": "security",
+      "subcategory": "app-security",
+      "website": "https://arcjet.com",
+      "a16zFund": "a16z Seed",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier available for small projects",
+      "pricingUrl": "https://arcjet.com/pricing",
+      "relevantTo": ["backend", "fullstack", "security"],
+      "useCase": "Add bot protection, rate limiting, email validation, and security to JS/TS apps"
+    },
+    {
+      "name": "Databricks",
+      "slug": "databricks",
+      "oneLiner": "Unified data analytics and AI platform combining data warehousing, ETL, ML, and governance in one lakehouse",
+      "category": "data",
+      "subcategory": "data-platform",
+      "website": "https://www.databricks.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free Community Edition for learning and experimentation",
+      "pricingUrl": "https://www.databricks.com/product/pricing",
+      "relevantTo": ["data-science", "ai-ml", "backend"],
+      "useCase": "Unified platform for data engineering, analytics, and machine learning"
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "oneLiner": "Payment infrastructure for the internet with APIs for accepting payments, managing subscriptions, and financial operations",
+      "category": "payments",
+      "subcategory": "payment-processing",
+      "website": "https://stripe.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "No monthly fees; pay-per-transaction pricing (2.9% + 30 cents per successful charge)",
+      "pricingUrl": "https://stripe.com/pricing",
+      "relevantTo": ["backend", "fullstack", "fintech"],
+      "useCase": "Accept payments, manage subscriptions, handle payouts, and build financial products"
+    },
+    {
+      "name": "GitHub",
+      "slug": "github",
+      "oneLiner": "World's largest code hosting platform with version control, CI/CD, project management, and AI-powered Copilot",
+      "category": "developer-tools",
+      "subcategory": "version-control",
+      "website": "https://github.com",
+      "a16zFund": "a16z Main Fund (exited via Microsoft acquisition)",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier with unlimited public/private repos, 2,000 CI/CD minutes, and Copilot Free",
+      "pricingUrl": "https://github.com/pricing",
+      "relevantTo": ["frontend", "backend", "fullstack", "devops"],
+      "useCase": "Host code, collaborate on projects, automate workflows, and use AI-powered code suggestions"
+    },
+    {
+      "name": "Figma",
+      "slug": "figma",
+      "oneLiner": "Collaborative design and prototyping platform for UI/UX design with real-time multiplayer editing",
+      "category": "design",
+      "subcategory": "ui-design",
+      "website": "https://www.figma.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free Starter plan with up to 3 Figma and 3 FigJam files",
+      "pricingUrl": "https://www.figma.com/pricing",
+      "relevantTo": ["frontend", "design", "prototyping"],
+      "useCase": "Design user interfaces, create prototypes, and collaborate with design teams"
+    },
+    {
+      "name": "Rork",
+      "slug": "rork",
+      "oneLiner": "AI-powered mobile app builder that turns natural language prompts into full React Native apps for iOS and Android in minutes",
+      "category": "ai-coding",
+      "subcategory": "app-builder",
+      "website": "https://rork.com",
+      "a16zFund": "a16z Speedrun",
+      "speedrun": true,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free to start building apps; paid plans for advanced features",
+      "pricingUrl": "https://rork.com/pricing",
+      "relevantTo": ["mobile", "fullstack", "prototyping"],
+      "useCase": "Generate complete React Native mobile apps from text descriptions with instant preview via Expo"
+    },
+    {
+      "name": "Runware",
+      "slug": "runware",
+      "oneLiner": "One API for all AI: unified inference platform for image, video, and audio generation with 400K+ models and sub-second latency",
+      "category": "ai-infrastructure",
+      "subcategory": "inference",
+      "website": "https://runware.ai",
+      "a16zFund": "a16z (investor)",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free trial credits on signup; cost-per-image pricing model",
+      "pricingUrl": "https://runware.ai/pricing",
+      "relevantTo": ["ai-ml", "backend", "creative-tools"],
+      "useCase": "Integrate AI image/video/audio generation into apps via a single unified API"
+    },
+    {
+      "name": "Flora AI",
+      "slug": "flora-ai",
+      "oneLiner": "AI-powered infinite canvas creative tool for designers - Cursor for creatives with text, image, and video AI models",
+      "category": "ai-creative",
+      "subcategory": "design-tool",
+      "website": "https://www.florafauna.ai",
+      "a16zFund": "a16z Speedrun",
+      "speedrun": true,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free plan with limited projects and generated content; Pro starts at $16/month",
+      "pricingUrl": "https://www.florafauna.ai/pricing",
+      "relevantTo": ["design", "creative-tools", "ai-ml"],
+      "useCase": "AI-powered creative workflows combining text, image, and video generation on one canvas"
+    },
+    {
+      "name": "Hedra",
+      "slug": "hedra",
+      "oneLiner": "AI video generation platform for creating lifelike character-driven videos with realistic lip sync and expressions from images and audio",
+      "category": "ai-creative",
+      "subcategory": "video-generation",
+      "website": "https://www.hedra.com",
+      "a16zFund": "a16z Infrastructure Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier with 300 credits, no credit card required; API requires paid subscription",
+      "pricingUrl": "https://www.hedra.com/pricing",
+      "relevantTo": ["ai-ml", "creative-tools", "video"],
+      "useCase": "Generate character-driven AI videos with lip sync and facial animation via web app or API"
+    },
+    {
+      "name": "k-ID",
+      "slug": "k-id",
+      "oneLiner": "Child safety compliance platform that helps developers automatically comply with kids' privacy and safety regulations across 200+ global markets",
+      "category": "compliance",
+      "subcategory": "child-safety",
+      "website": "https://www.k-id.com",
+      "a16zFund": "a16z Speedrun",
+      "speedrun": true,
+      "hasFreeTier": false,
+      "freeTierDetails": "Enterprise/B2B pricing; contact for details",
+      "pricingUrl": "https://www.k-id.com",
+      "relevantTo": ["backend", "gaming", "compliance"],
+      "useCase": "Automate child safety compliance for games and apps across global jurisdictions"
+    },
+    {
+      "name": "Nexxa AI",
+      "slug": "nexxa-ai",
+      "oneLiner": "Agentic AI platform for industrial engineering that automates critical engineering workflows in heavy industries",
+      "category": "ai-agents",
+      "subcategory": "industrial",
+      "website": "https://nexxa.ai",
+      "a16zFund": "a16z Speedrun",
+      "speedrun": true,
+      "hasFreeTier": false,
+      "freeTierDetails": "Enterprise B2B pricing; contact for details",
+      "pricingUrl": "https://nexxa.ai",
+      "relevantTo": ["ai-ml", "enterprise", "industrial"],
+      "useCase": "AI agents that integrate with legacy systems to automate engineering processes in heavy industry"
+    },
+    {
+      "name": "Fundamental Research Labs",
+      "slug": "fundamental",
+      "oneLiner": "Applied AI research company building autonomous collaborative AI agents, including Fairies (general AI assistant) and Shortcut (spreadsheet agent)",
+      "category": "ai-agents",
+      "subcategory": "autonomous-agents",
+      "website": "https://fundamentalresearchlabs.com",
+      "a16zFund": "a16z Speedrun",
+      "speedrun": true,
+      "hasFreeTier": true,
+      "freeTierDetails": "Consumer-facing tools available; pricing varies by product",
+      "pricingUrl": "https://fundamentalresearchlabs.com",
+      "relevantTo": ["ai-ml", "productivity", "agents"],
+      "useCase": "Autonomous AI agents for complex workflows - from Minecraft NPCs to financial modeling"
+    },
+    {
+      "name": "PagerDuty",
+      "slug": "pagerduty",
+      "oneLiner": "Incident management and on-call alerting platform for DevOps teams to respond to production incidents",
+      "category": "monitoring",
+      "subcategory": "incident-management",
+      "website": "https://www.pagerduty.com",
+      "a16zFund": "a16z Main Fund",
+      "speedrun": false,
+      "hasFreeTier": true,
+      "freeTierDetails": "Free tier for up to 5 users with basic incident management",
+      "pricingUrl": "https://www.pagerduty.com/pricing",
+      "relevantTo": ["devops", "backend", "sre"],
+      "useCase": "On-call alerting, incident response, and operations management for production systems"
+    }
+  ],
+  "categories": {
+    "ai-coding": {
+      "label": "AI Coding Tools",
+      "description": "AI-powered code editors, IDEs, and app builders",
+      "companies": ["cursor", "replit", "sourcegraph", "rork"]
+    },
+    "ai-infrastructure": {
+      "label": "AI Infrastructure",
+      "description": "Model hosting, inference APIs, and AI development platforms",
+      "companies": ["replicate", "fal-ai", "groq", "elevenlabs", "mistral", "runware"]
+    },
+    "ai-creative": {
+      "label": "AI Creative Tools",
+      "description": "AI-powered design, video, and content creation tools",
+      "companies": ["flora-ai", "hedra"]
+    },
+    "ai-agents": {
+      "label": "AI Agents",
+      "description": "Autonomous AI agents for various domains",
+      "companies": ["nexxa-ai", "fundamental"]
+    },
+    "auth": {
+      "label": "Authentication",
+      "description": "User authentication and identity management",
+      "companies": ["clerk"]
+    },
+    "database": {
+      "label": "Databases",
+      "description": "Database platforms and data storage",
+      "companies": ["planetscale"]
+    },
+    "data": {
+      "label": "Data & Analytics",
+      "description": "Data platforms, notebooks, and analytics tools",
+      "companies": ["hex", "databricks"]
+    },
+    "payments": {
+      "label": "Payments",
+      "description": "Payment processing and financial infrastructure",
+      "companies": ["stripe"]
+    },
+    "developer-tools": {
+      "label": "Developer Tools",
+      "description": "Code hosting, SDK generation, and development utilities",
+      "companies": ["github", "stainless"]
+    },
+    "design": {
+      "label": "Design",
+      "description": "UI/UX design and prototyping tools",
+      "companies": ["figma"]
+    },
+    "security": {
+      "label": "Security",
+      "description": "Application security and protection",
+      "companies": ["arcjet"]
+    },
+    "compliance": {
+      "label": "Compliance",
+      "description": "Regulatory compliance tools",
+      "companies": ["k-id"]
+    },
+    "monitoring": {
+      "label": "Monitoring & Ops",
+      "description": "Incident management, monitoring, and observability",
+      "companies": ["pagerduty"]
+    }
+  },
+  "speedrunCompanies": [
+    {
+      "name": "Rork",
+      "slug": "rork",
+      "cohort": "SR004/SR005",
+      "raised": "$2.8M pre-seed"
+    },
+    {
+      "name": "Flora AI",
+      "slug": "flora-ai",
+      "cohort": "Speedrun",
+      "raised": "$42M Series A"
+    },
+    {
+      "name": "k-ID",
+      "slug": "k-id",
+      "cohort": "Speedrun",
+      "raised": "$45M+ total (Pre-seed through Series A)"
+    },
+    {
+      "name": "Nexxa AI",
+      "slug": "nexxa-ai",
+      "cohort": "Speedrun Badge 5",
+      "raised": "$4.4M pre-seed + $9M seed"
+    },
+    {
+      "name": "Fundamental Research Labs",
+      "slug": "fundamental",
+      "cohort": "Speedrun",
+      "raised": "$9M seed + $33M Series A"
+    }
+  ]
+}

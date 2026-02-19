@@ -1,0 +1,31 @@
+{
+  "name": "vibeads",
+  "version": "0.1.0",
+  "description": "Contextual dev tool discovery for Claude Code — powered by a16z portfolio",
+  "type": "module",
+  "bin": {
+    "vibeads": "./bin/vibeads.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ],
+  "keywords": [
+    "claude-code",
+    "developer-tools",
+    "a16z",
+    "vibeads",
+    "ads",
+    "hooks"
+  ],
+  "author": "Pooria Arab",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node bin/vibeads.js init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pooriaarab/vibeads.git"
+  }
+}
