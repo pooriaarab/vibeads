@@ -39,6 +39,33 @@ function handleSessionStart(hookInput) {
   const recommendations = generateRecommendations(stackProfile);
 
   if (recommendations.length > 0) {
+    // Write the top recommendation to current-recommendation.json
+    // so the status line shows a contextual ad immediately
+    const topRec = recommendations[0];
+    const portfolioPath = join(VIBEADS_DIR, "src", "data", "portfolio.json");
+    let fullCompany = topRec.company;
+
+    // Try to get full company data (with oneLiner) from portfolio
+    if (existsSync(portfolioPath)) {
+      try {
+        const portfolio = JSON.parse(readFileSync(portfolioPath, "utf-8"));
+        const match = portfolio.companies.find((c) => c.slug === topRec.company.slug);
+        if (match) fullCompany = match;
+      } catch {
+        // use the basic company data
+      }
+    }
+
+    writeFileSync(
+      join(VIBEADS_DIR, "current-recommendation.json"),
+      JSON.stringify({
+        company: fullCompany,
+        trigger: `stack-analysis: ${topRec.type} - ${topRec.message}`,
+        timestamp: new Date().toISOString(),
+      })
+    );
+
+    // Output context for Claude
     const contextLines = [
       "[vibeads] Tech stack analysis for this project:",
     ];
