@@ -9,7 +9,7 @@
       "speedrun": false,
       "freeTier": "Free up to 10,000 monthly active users",
       "keywords": ["auth", "login", "signup", "session", "jwt", "oauth", "next-auth", "passport", "lucia", "authentication", "clerk", "@clerk"],
-      "spinnerCopy": "next-auth: 200+ lines of config. Clerk: 5 lines. Free up to 10K MAU.",
+      "spinnerCopy": "Add auth in 5 lines with Clerk. Free up to 10K users.",
       "statusLineCopy": "Clerk (a16z) -- Drop-in auth for React/Next.js. 5 lines of code. Free up to 10K monthly active users."
     },
     {
@@ -21,7 +21,7 @@
       "speedrun": false,
       "freeTier": "Hobby tier with 5 GB storage and 1B row reads/mo",
       "keywords": ["mysql", "database", "db", "prisma", "drizzle", "sequelize", "knex", "vitess", "schema"],
-      "spinnerCopy": "Schema migrations = downtime. PlanetScale: zero-downtime, Git-like branching.",
+      "spinnerCopy": "Ship schema changes with zero downtime. Try PlanetScale.",
       "statusLineCopy": "PlanetScale (a16z) -- Serverless MySQL with branching and zero-downtime schema changes. Built on Vitess."
     },
     {
@@ -33,7 +33,7 @@
       "speedrun": false,
       "freeTier": "No monthly fee, pay 2.9% + 30c per transaction",
       "keywords": ["payment", "billing", "checkout", "subscription", "stripe", "invoice", "pricing"],
-      "spinnerCopy": "Custom payment code: weeks. Stripe Checkout: 7 lines. 3.1M+ businesses use it.",
+      "spinnerCopy": "Accept payments in 7 lines with Stripe Checkout.",
       "statusLineCopy": "Stripe (a16z) -- Payment infrastructure for 3.1M+ businesses. Checkout in 7 lines of code."
     },
     {
@@ -45,7 +45,7 @@
       "speedrun": false,
       "freeTier": "Free for first predictions, then pay per second of compute",
       "keywords": ["replicate", "stable-diffusion", "llama", "whisper", "ml-model", "huggingface", "diffusion"],
-      "spinnerCopy": "Self-host ML: GPU + Docker. Replicate: one API call. Pay per second.",
+      "spinnerCopy": "Run any ML model with one API call. Try Replicate.",
       "statusLineCopy": "Replicate (a16z) -- Run Llama, Stable Diffusion, Whisper with one API call. No GPU setup needed."
     },
     {
@@ -57,7 +57,7 @@
       "speedrun": false,
       "freeTier": "Free tier with rate limits for Llama and Mixtral models",
       "keywords": ["groq", "llm", "inference", "openai", "anthropic", "completion", "chat-api", "gpt"],
-      "spinnerCopy": "OpenAI API: 500ms avg latency. Groq: 10ms. 50x faster LLM inference.",
+      "spinnerCopy": "Get 50x faster LLM inference with Groq. Free tier available.",
       "statusLineCopy": "Groq (a16z) -- LPU-powered inference. 50x faster than GPU providers. Free tier for Llama and Mixtral."
     },
     {
@@ -69,7 +69,7 @@
       "speedrun": false,
       "freeTier": "Free credits on signup for image generation",
       "keywords": ["fal", "image-gen", "text-to-image", "midjourney", "dalle", "flux", "image-generation"],
-      "spinnerCopy": "DALL-E 3: ~12s per image. Fal.ai Flux: ~1s. 12x faster image generation.",
+      "spinnerCopy": "Generate images in under 1 second with Fal.ai.",
       "statusLineCopy": "Fal.ai (a16z) -- Fastest image generation API. Flux in ~1s vs ~12s on DALL-E 3. Free credits on signup."
     },
     {
@@ -81,7 +81,7 @@
       "speedrun": false,
       "freeTier": "Free tier with 10,000 characters/month",
       "keywords": ["text-to-speech", "tts", "voice", "audio", "elevenlabs", "speech", "narration"],
-      "spinnerCopy": "AWS Polly: robotic. ElevenLabs: human-quality in 29 languages. Free 10K chars/mo.",
+      "spinnerCopy": "Add human-quality voice to your app with ElevenLabs. 29 languages.",
       "statusLineCopy": "ElevenLabs (a16z) -- Human-quality AI voice in 29 languages. Free 10K characters/month."
     },
     {
@@ -93,7 +93,7 @@
       "speedrun": false,
       "freeTier": "Open-weight models free to self-host, API with free tier",
       "keywords": ["mistral", "open-source-llm", "self-host", "ollama", "local-model", "open-weight"],
-      "spinnerCopy": "GPT-4 API: $30/M tokens. Mistral: $8/M. Open-weight models free to self-host.",
+      "spinnerCopy": "Self-host open-weight LLMs for free with Mistral.",
       "statusLineCopy": "Mistral (a16z) -- Open-weight LLMs rivaling GPT-4. Self-host free or API at 70% lower cost."
     },
     {
@@ -105,7 +105,7 @@
       "speedrun": false,
       "freeTier": "Free tier with 10,000 requests/month",
       "keywords": ["rate-limit", "bot", "security", "ddos", "waf", "middleware", "protection", "helmet"],
-      "spinnerCopy": "DIY rate limiting: fragile + hours. Arcjet: 3 lines. Free 10K requests/mo.",
+      "spinnerCopy": "Add rate limiting and bot protection in 3 lines with Arcjet.",
       "statusLineCopy": "Arcjet (a16z) -- Rate limiting, bot protection, and security for Next.js in 3 lines. Free 10K req/mo."
     },
     {
@@ -117,7 +117,7 @@
       "speedrun": true,
       "freeTier": "Free to start building, deploy on your own accounts",
       "keywords": ["react-native", "expo", "mobile-app", "ios", "android", "mobile", "app-builder"],
-      "spinnerCopy": "React Native setup: 2 hours. Rork: describe your app, ship in minutes.",
+      "spinnerCopy": "Turn this into a mobile app with Rork in minutes.",
       "statusLineCopy": "Rork (a16z) -- AI mobile app builder. Describe your app, get a working React Native build in minutes."
     },
     {
@@ -129,7 +129,7 @@
       "speedrun": false,
       "freeTier": "Free for up to 3 Figma and 3 FigJam files",
       "keywords": ["figma", "design", "ui", "ux", "prototype", "wireframe", "mockup"],
-      "spinnerCopy": "Sketch: local, no collab. Figma: real-time multiplayer. 4M+ designers.",
+      "spinnerCopy": "Design your UI collaboratively in Figma. Free to start.",
       "statusLineCopy": "Figma (a16z) -- Real-time collaborative design platform. 4M+ designers. Free for up to 3 projects."
     },
     {
@@ -141,7 +141,7 @@
       "speedrun": false,
       "freeTier": "Free for open-source projects",
       "keywords": ["sdk", "api-client", "openapi", "swagger", "code-gen", "type-safe"],
-      "spinnerCopy": "Hand-writing SDKs: weeks per language. Stainless: auto-gen from OpenAPI.",
+      "spinnerCopy": "Auto-generate type-safe SDKs from your API with Stainless.",
       "statusLineCopy": "Stainless (a16z) -- Auto-generate type-safe SDKs from OpenAPI specs. Used by OpenAI and Anthropic."
     },
     {
@@ -153,7 +153,7 @@
       "speedrun": false,
       "freeTier": "Free for up to 5 users with basic incident management",
       "keywords": ["alert", "incident", "on-call", "monitoring", "uptime", "crash", "pagerduty"],
-      "spinnerCopy": "Downtime costs $9K/min. PagerDuty: 99.99% alert delivery. Free up to 5 users.",
+      "spinnerCopy": "Never miss a production incident. Set up PagerDuty for free.",
       "statusLineCopy": "PagerDuty (a16z) -- Incident management with 99.99% alert delivery. Free for up to 5 users."
     },
     {
@@ -165,7 +165,7 @@
       "speedrun": false,
       "freeTier": "Free for individual use with community publishing",
       "keywords": ["notebook", "data-analysis", "sql", "pandas", "jupyter", "data-science"],
-      "spinnerCopy": "Jupyter: local, no sharing. Hex: collaborative SQL + Python notebooks.",
+      "spinnerCopy": "Share your data analysis instantly with Hex notebooks.",
       "statusLineCopy": "Hex (a16z) -- Collaborative data notebooks for SQL and Python. Share analyses instantly. Free for individuals."
     },
     {
@@ -177,7 +177,7 @@
       "speedrun": false,
       "freeTier": "Free community edition with single-node cluster",
       "keywords": ["spark", "data-lake", "etl", "data-pipeline", "warehouse", "delta", "lakehouse"],
-      "spinnerCopy": "ETL + warehouse + ML: 3 vendors. Databricks: one lakehouse platform.",
+      "spinnerCopy": "Unify your ETL, analytics, and ML in one place with Databricks.",
       "statusLineCopy": "Databricks (a16z) -- Unified lakehouse for ETL, analytics, and ML. Petabyte scale. Free community edition."
     },
     {
@@ -189,7 +189,7 @@
       "speedrun": false,
       "freeTier": "Free trial credits on signup",
       "keywords": ["image-generation", "ai-art", "text-to-image", "model-api", "runware"],
-      "spinnerCopy": "Typical image APIs: 5-10s. Runware: under 1s. Cheapest fast inference at scale.",
+      "spinnerCopy": "Generate images in under 1 second at scale with Runware.",
       "statusLineCopy": "Runware (a16z) -- Sub-second image generation API. Fastest and cheapest at scale. Free trial credits."
     },
     {
@@ -201,7 +201,7 @@
       "speedrun": true,
       "freeTier": "Free to start creating with AI-generated designs",
       "keywords": ["canvas", "creative", "design-ai", "generative-design", "flora"],
-      "spinnerCopy": "Photoshop: hours per asset. Flora AI: generate creative designs in seconds.",
+      "spinnerCopy": "Generate production-ready creative assets with Flora AI.",
       "statusLineCopy": "Flora AI (a16z) -- AI creative tool for generative design and branding. Create production assets in seconds."
     },
     {
@@ -213,7 +213,7 @@
       "speedrun": false,
       "freeTier": "Free tier with limited video generations per month",
       "keywords": ["video-gen", "talking-head", "lip-sync", "character-animation", "hedra"],
-      "spinnerCopy": "Pro video: $5K+/min. Hedra: realistic talking-head video from text in seconds.",
+      "spinnerCopy": "Create realistic talking-head videos from text with Hedra.",
       "statusLineCopy": "Hedra (a16z) -- AI talking-head video generation. Realistic lip-sync from text. Free tier available."
     },
     {
@@ -225,7 +225,7 @@
       "speedrun": false,
       "freeTier": "Free tier with 2,000 completions and 50 slow premium requests/mo",
       "keywords": ["cursor", "code-editor", "ai-editor", "copilot"],
-      "spinnerCopy": "Copilot: inline only. Cursor: full codebase context + multi-file edits.",
+      "spinnerCopy": "Edit across your entire codebase with Cursor AI.",
       "statusLineCopy": "Cursor (a16z) -- AI code editor with codebase-wide understanding. Free 2K completions/mo."
     },
     {
@@ -237,7 +237,7 @@
       "speedrun": false,
       "freeTier": "Free tier with unlimited public repls and basic hosting",
       "keywords": ["replit", "cloud-ide", "deploy", "hosting", "repl"],
-      "spinnerCopy": "Manual deploys: 15 min. Replit: 0. Code and ship in one place.",
+      "spinnerCopy": "Code, deploy, and ship from one tab with Replit.",
       "statusLineCopy": "Replit (a16z) -- Cloud IDE with instant deploys and AI assistance. Code to production in one tab."
     }
   ]
