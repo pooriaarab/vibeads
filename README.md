@@ -4,6 +4,8 @@ Contextual dev tool discovery for Claude Code -- powered by a16z portfolio.
 
 While Claude Code works, vibeads shows you relevant a16z portfolio tools based on what you're building. No generic ads -- data-driven, comparative recommendations that actually help you ship faster.
 
+https://github.com/pooriaarab/vibeads/raw/main/video/out/vibeads-demo.mp4
+
 ## Install
 
 ```
