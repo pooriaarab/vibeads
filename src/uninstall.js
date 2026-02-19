@@ -26,8 +26,17 @@ export async function uninstall() {
       delete settings.statusLine;
     }
 
+    // Restore original spinner verbs
+    const originalVerbsPath = join(VIBEADS_DIR, "original-spinner-verbs.json");
+    if (existsSync(originalVerbsPath)) {
+      settings.spinnerVerbs = JSON.parse(readFileSync(originalVerbsPath, "utf-8"));
+    } else {
+      delete settings.spinnerVerbs;
+    }
+
     writeFileSync(CLAUDE_SETTINGS, JSON.stringify(settings, null, 2));
     console.log("  Removed hooks from ~/.claude/settings.json");
+    console.log("  Restored original spinner verbs");
   }
 
   if (existsSync(VIBEADS_DIR)) {
