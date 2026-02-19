@@ -1,10 +1,10 @@
 {
   "name": "vibeads",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Contextual dev tool discovery for Claude Code — powered by a16z portfolio",
   "type": "module",
   "bin": {
-    "vibeads": "./bin/vibeads.js"
+    "vibeads": "bin/vibeads.js"
   },
   "files": [
     "bin/",
@@ -26,6 +26,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pooriaarab/vibeads.git"
+    "url": "git+https://github.com/pooriaarab/vibeads.git"
   }
 }
