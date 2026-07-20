@@ -109,7 +109,9 @@ export async function init() {
     };
   }
 
-  // Write settings back
+  // Write settings back. ~/.claude/ may not exist yet on a machine that has
+  // never run Claude Code before this install.
+  mkdirSync(dirname(CLAUDE_SETTINGS), { recursive: true });
   writeFileSync(CLAUDE_SETTINGS, JSON.stringify(settings, null, 2));
   console.log("  Added hooks to ~/.claude/settings.json");
   console.log("  Replaced spinner verbs with a16z portfolio ads");
