@@ -19,10 +19,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
 
+      # package-lock.json is gitignored in this repo, so `npm ci` (which
+      # requires a committed lockfile) is not usable here; install instead.
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Syntax-check bin and src
         run: |
