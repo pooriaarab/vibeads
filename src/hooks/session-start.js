@@ -86,42 +86,105 @@ function handleSessionStart(hookInput) {
   process.exit(0);
 }
 
+const CONFIG_CHECKS = [
+  { file: "prisma/schema.prisma", tool: "prisma", category: "database" },
+  { file: "drizzle.config.ts", tool: "drizzle", category: "database" },
+  { file: "docker-compose.yml", tool: "docker", category: "infrastructure" },
+  { file: "Dockerfile", tool: "docker", category: "infrastructure" },
+  { file: ".env", tool: "env-vars", category: "config" },
+  { file: "next.config.js", tool: "nextjs", category: "framework" },
+  { file: "next.config.ts", tool: "nextjs", category: "framework" },
+  { file: "vercel.json", tool: "vercel", category: "hosting" },
+  { file: "tailwind.config.js", tool: "tailwind", category: "styling" },
+  { file: "tailwind.config.ts", tool: "tailwind", category: "styling" },
+];
+
+const STACK_DETECTORS = [
+  {
+    id: "supabase",
+    label: "baas",
+    detect: (deps, _files) => deps.some((d) => d.includes("supabase")),
+  },
+  {
+    id: "firebase",
+    label: "baas",
+    detect: (deps, _files) => deps.some((d) => d.includes("firebase")),
+  },
+  {
+    id: "next-auth",
+    label: "auth",
+    detect: (deps, _files) => deps.includes("next-auth") || deps.includes("@auth/core"),
+  },
+  {
+    id: "clerk",
+    label: "auth",
+    detect: (deps, _files) =>
+      deps.includes("@clerk/nextjs") || deps.includes("@clerk/clerk-sdk-node"),
+  },
+  {
+    id: "stripe",
+    label: "payments",
+    detect: (deps, _files) => deps.includes("stripe") || deps.includes("@stripe/stripe-js"),
+  },
+  {
+    id: "raw-sql",
+    label: "database",
+    detect: (deps, _files) => deps.includes("pg") || deps.includes("mysql2"),
+  },
+  {
+    id: "mongodb",
+    label: "database",
+    detect: (deps, _files) => deps.includes("mongoose") || deps.includes("mongodb"),
+  },
+];
+
+const GAP_DETECTORS = [
+  { id: "auth", detect: (_deps, tools) => !tools.auth },
+  { id: "database", detect: (_deps, tools) => !tools.database && !tools.baas },
+  { id: "payments", detect: (_deps, tools) => !tools.payments },
+  {
+    id: "monitoring",
+    detect: (deps) =>
+      !deps.some((d) => d.includes("sentry") || d.includes("datadog")),
+  },
+  {
+    id: "security",
+    detect: (deps) =>
+      !deps.some(
+        (d) =>
+          d.includes("rate-limit") ||
+          d.includes("helmet") ||
+          d.includes("arcjet")
+      ),
+  },
+];
+
+function loadPackageDependencies(cwd) {
+  const pkgPath = join(cwd, "package.json");
+  if (!existsSync(pkgPath)) {
+    return {};
+  }
+  try {
+    const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
+    return {
+      ...pkg.dependencies,
+      ...pkg.devDependencies,
+    };
+  } catch {
+    return {};
+  }
+}
+
 function analyzeStack(cwd) {
   const profile = {
     directory: cwd,
-    dependencies: {},
+    dependencies: loadPackageDependencies(cwd),
     configFiles: [],
     detectedTools: {},
     gaps: [],
   };
 
-  const pkgPath = join(cwd, "package.json");
-  if (existsSync(pkgPath)) {
-    try {
-      const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
-      profile.dependencies = {
-        ...pkg.dependencies,
-        ...pkg.devDependencies,
-      };
-    } catch {
-      // ignore
-    }
-  }
-
-  const configChecks = [
-    { file: "prisma/schema.prisma", tool: "prisma", category: "database" },
-    { file: "drizzle.config.ts", tool: "drizzle", category: "database" },
-    { file: "docker-compose.yml", tool: "docker", category: "infrastructure" },
-    { file: "Dockerfile", tool: "docker", category: "infrastructure" },
-    { file: ".env", tool: "env-vars", category: "config" },
-    { file: "next.config.js", tool: "nextjs", category: "framework" },
-    { file: "next.config.ts", tool: "nextjs", category: "framework" },
-    { file: "vercel.json", tool: "vercel", category: "hosting" },
-    { file: "tailwind.config.js", tool: "tailwind", category: "styling" },
-    { file: "tailwind.config.ts", tool: "tailwind", category: "styling" },
-  ];
-
-  for (const check of configChecks) {
+  for (const check of CONFIG_CHECKS) {
     if (existsSync(join(cwd, check.file))) {
       profile.configFiles.push(check.file);
       profile.detectedTools[check.category] = check.tool;
@@ -129,94 +192,88 @@ function analyzeStack(cwd) {
   }
 
   const deps = Object.keys(profile.dependencies);
-  if (deps.some((d) => d.includes("supabase")))
-    profile.detectedTools.baas = "supabase";
-  if (deps.some((d) => d.includes("firebase")))
-    profile.detectedTools.baas = "firebase";
-  if (deps.includes("next-auth") || deps.includes("@auth/core"))
-    profile.detectedTools.auth = "next-auth";
-  if (deps.includes("@clerk/nextjs") || deps.includes("@clerk/clerk-sdk-node"))
-    profile.detectedTools.auth = "clerk";
-  if (deps.includes("stripe") || deps.includes("@stripe/stripe-js"))
-    profile.detectedTools.payments = "stripe";
-  if (deps.includes("pg") || deps.includes("mysql2"))
-    profile.detectedTools.database = "raw-sql";
-  if (deps.includes("mongoose") || deps.includes("mongodb"))
-    profile.detectedTools.database = "mongodb";
+  STACK_DETECTORS.reduce((tools, detector) => {
+    if (detector.detect(deps, profile.configFiles)) {
+      tools[detector.label] = detector.id;
+    }
+    return tools;
+  }, profile.detectedTools);
 
-  if (!profile.detectedTools.auth) profile.gaps.push("auth");
-  if (!profile.detectedTools.database && !profile.detectedTools.baas)
-    profile.gaps.push("database");
-  if (!profile.detectedTools.payments) profile.gaps.push("payments");
-  if (!deps.some((d) => d.includes("sentry") || d.includes("datadog")))
-    profile.gaps.push("monitoring");
-  if (
-    !deps.some(
-      (d) =>
-        d.includes("rate-limit") ||
-        d.includes("helmet") ||
-        d.includes("arcjet")
-    )
-  )
-    profile.gaps.push("security");
+  GAP_DETECTORS.reduce((gaps, gap) => {
+    if (gap.detect(deps, profile.detectedTools)) {
+      gaps.push(gap.id);
+    }
+    return gaps;
+  }, profile.gaps);
 
   return profile;
 }
 
-function generateRecommendations(profile) {
-  const recommendations = [];
+const GAP_RECOMMENDATIONS = {
+  auth: {
+    company: { name: "Clerk", slug: "clerk", speedrun: false, website: "https://clerk.com" },
+    type: "missing",
+    message: "No auth detected. Clerk gives you drop-in auth with 10K free MAU",
+  },
+  monitoring: {
+    company: { name: "PagerDuty", slug: "pagerduty", speedrun: false, website: "https://www.pagerduty.com" },
+    type: "missing",
+    message: "No monitoring detected. PagerDuty free tier covers 5 users for incident management",
+  },
+  security: {
+    company: { name: "Arcjet", slug: "arcjet", speedrun: false, website: "https://arcjet.com" },
+    type: "missing",
+    message: "No rate limiting or bot protection. Arcjet adds security middleware in 3 lines",
+  },
+};
 
-  const gapMapping = {
-    auth: {
-      company: { name: "Clerk", slug: "clerk", speedrun: false, website: "https://clerk.com" },
-      type: "missing",
-      message: "No auth detected. Clerk gives you drop-in auth with 10K free MAU",
-    },
-    monitoring: {
-      company: { name: "PagerDuty", slug: "pagerduty", speedrun: false, website: "https://www.pagerduty.com" },
-      type: "missing",
-      message: "No monitoring detected. PagerDuty free tier covers 5 users for incident management",
-    },
-    security: {
-      company: { name: "Arcjet", slug: "arcjet", speedrun: false, website: "https://arcjet.com" },
-      type: "missing",
-      message: "No rate limiting or bot protection. Arcjet adds security middleware in 3 lines",
-    },
-  };
-
-  for (const gap of profile.gaps) {
-    if (gapMapping[gap]) {
-      recommendations.push(gapMapping[gap]);
-    }
-  }
-
-  const deps = Object.keys(profile.dependencies);
-  if (deps.includes("next-auth") || deps.includes("@auth/core")) {
-    recommendations.push({
+const STACK_RECOMMENDATIONS = [
+  {
+    id: "next-auth",
+    detect: (_profile, deps) => deps.includes("next-auth") || deps.includes("@auth/core"),
+    recommendation: {
       company: { name: "Clerk", slug: "clerk", speedrun: false, website: "https://clerk.com" },
       type: "alternative",
       message: "Using next-auth? Clerk replaces 200+ lines of auth config with 5 lines. Free up to 10K MAU",
-    });
-  }
-
-  if (
-    profile.detectedTools.database === "raw-sql" ||
-    deps.includes("prisma") ||
-    deps.includes("drizzle-orm")
-  ) {
-    recommendations.push({
+    },
+  },
+  {
+    id: "planetscale",
+    detect: (profile, deps) =>
+      profile.detectedTools.database === "raw-sql" ||
+      deps.includes("prisma") ||
+      deps.includes("drizzle-orm"),
+    recommendation: {
       company: { name: "PlanetScale", slug: "planetscale", speedrun: false, website: "https://planetscale.com" },
       type: "upgrade",
       message: "PlanetScale: serverless MySQL with non-blocking schema changes. No more migration headaches",
-    });
-  }
-
-  if (deps.some((d) => d.includes("openai"))) {
-    recommendations.push({
+    },
+  },
+  {
+    id: "openai",
+    detect: (_profile, deps) => deps.some((d) => d.includes("openai")),
+    recommendation: {
       company: { name: "Groq", slug: "groq", speedrun: false, website: "https://groq.com" },
       type: "alternative",
       message: "Using OpenAI? Groq runs Llama/Mixtral at 50x the speed. Free tier available",
-    });
+    },
+  },
+];
+
+function generateRecommendations(profile) {
+  const recommendations = [];
+  const deps = Object.keys(profile.dependencies);
+
+  for (const gap of profile.gaps) {
+    if (Object.hasOwn(GAP_RECOMMENDATIONS, gap)) {
+      recommendations.push(GAP_RECOMMENDATIONS[gap]);
+    }
+  }
+
+  for (const rule of STACK_RECOMMENDATIONS) {
+    if (rule.detect(profile, deps)) {
+      recommendations.push(rule.recommendation);
+    }
   }
 
   return recommendations;
