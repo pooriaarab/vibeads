@@ -6,6 +6,12 @@ on:
 permissions:
   contents: read
 
+# Cancel a superseded PR run, but never a push to the default branch —
+# that run is the record of what landed on main.
+concurrency:
+  group: oxlint-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   oxlint:
     runs-on: ubuntu-latest
