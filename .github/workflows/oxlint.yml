@@ -15,5 +15,5 @@ jobs:
           # bunx runs downloaded package code; keep the token out of .git/config.
           persist-credentials: false
       - uses: oven-sh/setup-bun@v2
-      - name: oxlint (agent budgets — warn-only, ratchet to error later)
+      - name: oxlint (agent budgets — enforced, violations fail the build)
         run: bunx oxlint@^1 --config .oxlintrc.json
