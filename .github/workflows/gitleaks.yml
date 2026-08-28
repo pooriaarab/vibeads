@@ -9,9 +9,11 @@ permissions:
   contents: read
   pull-requests: read
 
+# Cancel a superseded PR run, but never a push to the default branch — since
+# gitleaks scans full history, a cancelled push leaves a commit unscanned.
 concurrency:
-  group: secret-scanning-${{ github.ref }}
-  cancel-in-progress: true
+  group: secret-scanning-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   gitleaks:
