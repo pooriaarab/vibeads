@@ -1,0 +1,16 @@
+export const S1_START = 0;
+export const S1_END = 90; // 0-3s
+export const S2_START = 90;
+export const S2_END = 210; // 3-7s
+export const S3_START = 210;
+export const S3_END = 300; // 7-10s
+export const S4_START = 300;
+export const S4_END = 420; // 10-14s
+export const S5_START = 420;
+export const S5_END = 600; // 14-20s
+export const S6_START = 600;
+export const S6_END = 720; // 20-24s
+export const S7_START = 720;
+export const S7_END = 810; // 24-27s
+export const S8_START = 810;
+export const S8_END = 900; // 27-30s

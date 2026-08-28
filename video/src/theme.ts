@@ -1,0 +1,10 @@
+export const BG = "#0d1117";
+export const BG_LIGHTER = "#161b22";
+export const CYAN = "#58a6ff";
+export const GREEN = "#3fb950";
+export const ORANGE = "#f0883e";
+export const RED = "#f85149";
+export const WHITE = "#e6edf3";
+export const GRAY = "#8b949e";
+export const DIM = "#484f58";
+export const ACCENT = "#bc8cff";
