@@ -14,8 +14,9 @@ Closes #
      both fail the check, because neither tells a reviewer anything. Delete this comment. -->
 
 ```text
-bun test      ->
-bun run build ->
+npm install                                                    ->
+find bin src -name "*.js" -print0 | xargs -0 -n1 node --check  ->
+npm pack --dry-run                                             ->
 ```
 
 Assisted-by: <agent>:<model>
