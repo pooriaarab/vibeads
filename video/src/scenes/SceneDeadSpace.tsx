@@ -10,21 +10,14 @@ const DeadSpaceCut1: React.FC<{
   localFrame: number;
   cutDuration: number;
 }> = ({ localFrame, cutDuration }) => {
-  const cutOpacity = interpolate(
-    localFrame,
-    [0, 3, cutDuration - 3, cutDuration],
-    [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
-  );
+  const cutOpacity = interpolate(localFrame, [0, 3, cutDuration - 3, cutDuration], [0, 1, 1, 0], {
+    extrapolateRight: "clamp",
+  });
   return (
     <div style={{ opacity: cutOpacity }}>
       <Terminal scale={0.8}>
         <HighlightBox color={RED} frame={localFrame}>
-          <Spinner
-            text="Thinking..."
-            frame={localFrame}
-            color={DIM}
-          />
+          <Spinner text="Thinking..." frame={localFrame} color={DIM} />
         </HighlightBox>
       </Terminal>
     </div>
@@ -39,21 +32,13 @@ const DeadSpaceCut2: React.FC<{
     localFrame - cutDuration,
     [0, 3, cutDuration - 3, cutDuration],
     [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
+    { extrapolateRight: "clamp" },
   );
   return (
     <div style={{ opacity: cutOpacity }}>
-      <Terminal
-        scale={0.8}
-        showStatusLine
-        statusLine=""
-      >
+      <Terminal scale={0.8} showStatusLine statusLine="">
         <div style={{ color: DIM }}>
-          <Spinner
-            text="Reading project..."
-            frame={localFrame}
-            color={DIM}
-          />
+          <Spinner text="Reading project..." frame={localFrame} color={DIM} />
         </div>
       </Terminal>
     </div>
@@ -68,14 +53,12 @@ const DeadSpaceCut3: React.FC<{
     localFrame - cutDuration * 2,
     [0, 3, cutDuration - 3, cutDuration],
     [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
+    { extrapolateRight: "clamp" },
   );
   return (
     <div style={{ opacity: cutOpacity }}>
       <Terminal scale={0.8}>
-        <div style={{ color: DIM, fontSize: 18 }}>
-          Starting session...
-        </div>
+        <div style={{ color: DIM, fontSize: 18 }}>Starting session...</div>
         <div style={{ height: 200 }} />
       </Terminal>
     </div>
@@ -115,26 +98,18 @@ const DeadSpaceCuts: React.FC<{
   cutDuration: number;
 }> = ({ localFrame, cutDuration }) => {
   if (localFrame < cutDuration) {
-    return (
-      <DeadSpaceCut1 localFrame={localFrame} cutDuration={cutDuration} />
-    );
+    return <DeadSpaceCut1 localFrame={localFrame} cutDuration={cutDuration} />;
   }
 
   if (localFrame < cutDuration * 2) {
-    return (
-      <DeadSpaceCut2 localFrame={localFrame} cutDuration={cutDuration} />
-    );
+    return <DeadSpaceCut2 localFrame={localFrame} cutDuration={cutDuration} />;
   }
 
   if (localFrame < cutDuration * 3) {
-    return (
-      <DeadSpaceCut3 localFrame={localFrame} cutDuration={cutDuration} />
-    );
+    return <DeadSpaceCut3 localFrame={localFrame} cutDuration={cutDuration} />;
   }
 
-  return (
-    <DeadSpaceText localFrame={localFrame} cutDuration={cutDuration} />
-  );
+  return <DeadSpaceText localFrame={localFrame} cutDuration={cutDuration} />;
 };
 
 export const SceneDeadSpace: React.FC<{ frame: number }> = ({ frame }) => {
