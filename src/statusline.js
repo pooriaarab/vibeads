@@ -45,10 +45,8 @@ function render() {
   const url = company.website + "?ref=vibeads";
 
   console.log(
-    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m -- ${company.oneLiner}`
+    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m -- ${company.oneLiner}`,
   );
 
-  console.log(
-    `\x1b[90m  \x1b]8;;${url}\x07${url}\x1b]8;;\x07\x1b[0m`
-  );
+  console.log(`\x1b[90m  \x1b]8;;${url}\x07${url}\x1b]8;;\x07\x1b[0m`);
 }

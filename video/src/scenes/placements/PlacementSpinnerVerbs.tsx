@@ -15,7 +15,7 @@ export const PlacementSpinnerVerbs: React.FC<{
     localFrame,
     [0, 5, placementDuration - 5, placementDuration],
     [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
+    { extrapolateRight: "clamp" },
   );
   return (
     <PlacementFrame o={o}>

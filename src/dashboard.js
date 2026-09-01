@@ -45,9 +45,7 @@ export async function dashboard() {
     }
   }
 
-  const config = JSON.parse(
-    readFileSync(join(VIBEADS_DIR, "config.json"), "utf-8")
-  );
+  const config = JSON.parse(readFileSync(join(VIBEADS_DIR, "config.json"), "utf-8"));
   const activeTiers = Object.entries(config.tiers)
     .filter(([, v]) => v)
     .map(([k]) => k);
