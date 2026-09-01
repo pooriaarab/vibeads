@@ -3,10 +3,7 @@ import { spring } from "remotion";
 import { StatBlock, StatCaption } from "../../components/StatBlock";
 import { ACCENT, CYAN, GREEN, ORANGE } from "../../theme";
 
-const ScaleLayer: React.FC<{ i: number; localFrame: number }> = ({
-  i,
-  localFrame,
-}) => {
+const ScaleLayer: React.FC<{ i: number; localFrame: number }> = ({ i, localFrame }) => {
   const layerDelay = i * 5 + 30;
   const layerProgress = spring({
     frame: Math.max(0, localFrame - layerDelay),
