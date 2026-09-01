@@ -1,5 +1,10 @@
 # AGENTS.md
 
+## Repository context
+
+Read both `.agents/brand.md` and `.agents/design.md` before changing public copy,
+product claims, CLI output, or demo visuals.
+
 <!-- pr-standards:start -->
 
 ## Pull requests
