@@ -98,28 +98,28 @@ Cleanly removes all hooks from `~/.claude/settings.json` and deletes `~/.vibeads
 
 ## a16z Portfolio Companies (20)
 
-| Company | Category | Speedrun | What They Do |
-|---------|----------|----------|-------------|
-| Clerk | Auth | | Drop-in auth for React/Next.js |
-| PlanetScale | Database | | Serverless MySQL with branching |
-| Stripe | Payments | | Payment infrastructure for 3.1M+ businesses |
-| Replicate | AI Models | | Run open-source ML models via API |
-| Groq | AI Inference | | 50x faster LLM inference via LPU chips |
-| Fal.ai | AI Inference | | Sub-second image generation API |
-| ElevenLabs | Voice AI | | Human-quality AI voice in 29 languages |
-| Mistral | AI Models | | Open-weight LLMs at 70% lower cost |
-| Arcjet | Security | | Rate limiting and bot protection for Node.js |
-| Rork | Mobile | Yes | AI mobile app builder for React Native |
-| Figma | Design | | Collaborative design platform |
-| Stainless | Dev Tools | | Auto-generate type-safe SDKs from OpenAPI |
-| PagerDuty | Monitoring | | Incident management and on-call alerting |
-| Hex | Data | | Collaborative SQL and Python notebooks |
-| Databricks | Data | | Unified lakehouse for ETL, analytics, and ML |
-| Runware | AI API | | Fastest image generation API at scale |
-| Flora AI | Creative | Yes | AI creative design tool |
-| Hedra | Video | | AI talking-head video generation |
-| Cursor | Dev Tools | | AI-native code editor |
-| Replit | Dev Tools | | Cloud IDE with instant deploys |
+| Company     | Category     | Speedrun | What They Do                                 |
+| ----------- | ------------ | -------- | -------------------------------------------- |
+| Clerk       | Auth         |          | Drop-in auth for React/Next.js               |
+| PlanetScale | Database     |          | Serverless MySQL with branching              |
+| Stripe      | Payments     |          | Payment infrastructure for 3.1M+ businesses  |
+| Replicate   | AI Models    |          | Run open-source ML models via API            |
+| Groq        | AI Inference |          | 50x faster LLM inference via LPU chips       |
+| Fal.ai      | AI Inference |          | Sub-second image generation API              |
+| ElevenLabs  | Voice AI     |          | Human-quality AI voice in 29 languages       |
+| Mistral     | AI Models    |          | Open-weight LLMs at 70% lower cost           |
+| Arcjet      | Security     |          | Rate limiting and bot protection for Node.js |
+| Rork        | Mobile       | Yes      | AI mobile app builder for React Native       |
+| Figma       | Design       |          | Collaborative design platform                |
+| Stainless   | Dev Tools    |          | Auto-generate type-safe SDKs from OpenAPI    |
+| PagerDuty   | Monitoring   |          | Incident management and on-call alerting     |
+| Hex         | Data         |          | Collaborative SQL and Python notebooks       |
+| Databricks  | Data         |          | Unified lakehouse for ETL, analytics, and ML |
+| Runware     | AI API       |          | Fastest image generation API at scale        |
+| Flora AI    | Creative     | Yes      | AI creative design tool                      |
+| Hedra       | Video        |          | AI talking-head video generation             |
+| Cursor      | Dev Tools    |          | AI-native code editor                        |
+| Replit      | Dev Tools    |          | Cloud IDE with instant deploys               |
 
 ## How it works (technical)
 
