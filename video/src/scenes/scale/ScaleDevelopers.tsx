@@ -10,12 +10,7 @@ export const ScaleDevelopers: React.FC<{
 }> = ({ localFrame, left, top }) => {
   return (
     <StatBlock left={left} top={top}>
-      <DotGrid
-        count={400}
-        frame={localFrame}
-        startFrame={0}
-        color={CYAN}
-      />
+      <DotGrid count={400} frame={localFrame} startFrame={0} color={CYAN} />
       <StatCaption
         localFrame={localFrame}
         value="3,000,000+"

@@ -10,6 +10,7 @@ Contextual dev tool discovery for Claude Code. While Claude Code works, vibeads 
 ## When to Use This Skill
 
 Use this skill when the user:
+
 - Wants to discover relevant developer tools while coding
 - Asks about alternatives to their current tech stack
 - Wants contextual tool recommendations based on their project

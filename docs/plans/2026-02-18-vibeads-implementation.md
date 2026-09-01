@@ -13,6 +13,7 @@
 ### Task 1: Project Scaffolding
 
 **Files:**
+
 - Create: `package.json`
 - Create: `bin/vibeads.js`
 - Create: `.gitignore`
@@ -28,19 +29,8 @@
   "bin": {
     "vibeads": "./bin/vibeads.js"
   },
-  "files": [
-    "bin/",
-    "src/",
-    "README.md"
-  ],
-  "keywords": [
-    "claude-code",
-    "developer-tools",
-    "a16z",
-    "vibeads",
-    "ads",
-    "hooks"
-  ],
+  "files": ["bin/", "src/", "README.md"],
+  "keywords": ["claude-code", "developer-tools", "a16z", "vibeads", "ads", "hooks"],
   "author": "Pooria Arab",
   "license": "MIT",
   "repository": {
@@ -113,12 +103,14 @@ git commit -m "feat: scaffold vibeads npm package with CLI entry point"
 ### Task 2: Portfolio Data & Keyword Matcher
 
 **Files:**
+
 - Create: `src/data/portfolio.json`
 - Create: `src/matcher/keyword.js`
 
 **Step 1: Create portfolio data with keyword mappings**
 
 Create `src/data/portfolio.json` — this maps context keywords to a16z portfolio companies. Each company has:
+
 - `name`, `oneLiner`, `website`, `category`
 - `keywords`: array of strings that trigger this recommendation
 - `freeTier`: description of free offering (or null)
@@ -128,27 +120,27 @@ Create `src/data/portfolio.json` — this maps context keywords to a16z portfoli
 
 Include these companies with accurate keyword mappings:
 
-| Company | Keywords |
-|---------|----------|
-| Clerk | auth, login, signup, session, jwt, oauth, next-auth, passport, lucia, supabase auth |
-| PlanetScale | mysql, database, db, prisma, drizzle, sequelize, knex, planetscale, vitess |
-| Stripe | payment, billing, checkout, subscription, stripe, paypal, invoice |
-| Replicate | replicate, stable-diffusion, llama, whisper, ml-model, ai-model, huggingface |
-| Groq | groq, llm, inference, fast-api, openai, anthropic, completion, chat-api |
-| Fal.ai | fal, image-gen, text-to-image, midjourney, dalle, flux, stable-diffusion |
-| ElevenLabs | text-to-speech, tts, voice, audio, elevenlabs, speech-synthesis |
-| Mistral | mistral, open-source-llm, self-host, llm, ollama, local-model |
-| Arcjet | rate-limit, bot, security, ddos, waf, middleware, protection, cors |
-| Rork | react-native, expo, mobile-app, ios, android, mobile |
-| Figma | figma, design, ui, ux, prototype, wireframe, mockup |
-| GitHub | github, git, ci, actions, workflow, pipeline |
-| Stainless | sdk, api-client, openapi, swagger, code-gen, type-safe |
-| PagerDuty | alert, incident, on-call, monitoring, uptime, crash |
-| Hex | notebook, data-analysis, sql, pandas, jupyter, data-science |
-| Databricks | spark, data-lake, etl, data-pipeline, warehouse, delta |
-| Runware | image-generation, ai-art, text-to-image, model-api |
-| Flora AI | canvas, creative, design-ai, generative-design |
-| Hedra | video-gen, talking-head, lip-sync, character-animation |
+| Company     | Keywords                                                                            |
+| ----------- | ----------------------------------------------------------------------------------- |
+| Clerk       | auth, login, signup, session, jwt, oauth, next-auth, passport, lucia, supabase auth |
+| PlanetScale | mysql, database, db, prisma, drizzle, sequelize, knex, planetscale, vitess          |
+| Stripe      | payment, billing, checkout, subscription, stripe, paypal, invoice                   |
+| Replicate   | replicate, stable-diffusion, llama, whisper, ml-model, ai-model, huggingface        |
+| Groq        | groq, llm, inference, fast-api, openai, anthropic, completion, chat-api             |
+| Fal.ai      | fal, image-gen, text-to-image, midjourney, dalle, flux, stable-diffusion            |
+| ElevenLabs  | text-to-speech, tts, voice, audio, elevenlabs, speech-synthesis                     |
+| Mistral     | mistral, open-source-llm, self-host, llm, ollama, local-model                       |
+| Arcjet      | rate-limit, bot, security, ddos, waf, middleware, protection, cors                  |
+| Rork        | react-native, expo, mobile-app, ios, android, mobile                                |
+| Figma       | figma, design, ui, ux, prototype, wireframe, mockup                                 |
+| GitHub      | github, git, ci, actions, workflow, pipeline                                        |
+| Stainless   | sdk, api-client, openapi, swagger, code-gen, type-safe                              |
+| PagerDuty   | alert, incident, on-call, monitoring, uptime, crash                                 |
+| Hex         | notebook, data-analysis, sql, pandas, jupyter, data-science                         |
+| Databricks  | spark, data-lake, etl, data-pipeline, warehouse, delta                              |
+| Runware     | image-generation, ai-art, text-to-image, model-api                                  |
+| Flora AI    | canvas, creative, design-ai, generative-design                                      |
+| Hedra       | video-gen, talking-head, lip-sync, character-animation                              |
 
 **Step 2: Create keyword matcher**
 
@@ -160,9 +152,7 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const portfolio = JSON.parse(
-  readFileSync(join(__dirname, "../data/portfolio.json"), "utf-8")
-);
+const portfolio = JSON.parse(readFileSync(join(__dirname, "../data/portfolio.json"), "utf-8"));
 
 /**
  * Match tool context to a16z portfolio company using keyword matching.
@@ -206,8 +196,7 @@ function extractSearchableText(context) {
       // Extract command, file_path, content, pattern from tool input
       if (context.toolInput.command) parts.push(context.toolInput.command);
       if (context.toolInput.file_path) parts.push(context.toolInput.file_path);
-      if (context.toolInput.content)
-        parts.push(context.toolInput.content.slice(0, 500));
+      if (context.toolInput.content) parts.push(context.toolInput.content.slice(0, 500));
       if (context.toolInput.pattern) parts.push(context.toolInput.pattern);
       if (context.toolInput.query) parts.push(context.toolInput.query);
     }
@@ -231,6 +220,7 @@ git commit -m "feat: add a16z portfolio data and keyword matching engine"
 ### Task 3: Impression Tracker
 
 **Files:**
+
 - Create: `src/tracker/impressions.js`
 
 **Step 1: Create impression tracker**
@@ -286,8 +276,7 @@ export function recordImpression(companySlug, tier, context) {
     data.stats[companySlug] = { total: 0, byTier: {}, firstSeen: impression.timestamp };
   }
   data.stats[companySlug].total++;
-  data.stats[companySlug].byTier[tier] =
-    (data.stats[companySlug].byTier[tier] || 0) + 1;
+  data.stats[companySlug].byTier[tier] = (data.stats[companySlug].byTier[tier] || 0) + 1;
   data.stats[companySlug].lastSeen = impression.timestamp;
 
   saveImpressions(data);
@@ -300,9 +289,7 @@ export function getStats() {
   const data = loadImpressions();
   const today = new Date().toISOString().slice(0, 10);
 
-  const todayImpressions = data.impressions.filter((i) =>
-    i.timestamp.startsWith(today)
-  );
+  const todayImpressions = data.impressions.filter((i) => i.timestamp.startsWith(today));
 
   const uniqueCompanies = new Set(data.impressions.map((i) => i.company));
 
@@ -333,6 +320,7 @@ git commit -m "feat: add local impression tracking and stats"
 ### Task 4: Status Line Script (Tier 1)
 
 **Files:**
+
 - Create: `src/statusline.js`
 
 **Step 1: Create status line script**
@@ -384,14 +372,12 @@ function render() {
 
   // Line 1: Company name + one-liner
   console.log(
-    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m — ${company.statusLineCopy}`
+    `\x1b[36m${company.name}\x1b[0m\x1b[90m${speedrunBadge} (a16z)\x1b[0m — ${company.statusLineCopy}`,
   );
 
   // Line 2: Clickable link using OSC 8
   const url = company.website + "?ref=vibeads";
-  console.log(
-    `\x1b[90m  \x1b]8;;${url}\x07${url}\x1b]8;;\x07\x1b[0m`
-  );
+  console.log(`\x1b[90m  \x1b]8;;${url}\x07${url}\x1b]8;;\x07\x1b[0m`);
 }
 ```
 
@@ -407,6 +393,7 @@ git commit -m "feat: add status line script with clickable OSC 8 links"
 ### Task 5: PostToolUse Hook (Tiers 2-4)
 
 **Files:**
+
 - Create: `src/hooks/post-tool.js`
 
 **Step 1: Create PostToolUse hook script**
@@ -414,6 +401,7 @@ git commit -m "feat: add status line script with clickable OSC 8 links"
 Create `src/hooks/post-tool.js`:
 
 This script:
+
 1. Reads hook JSON from stdin
 2. Runs keyword matching (fast, Tier 1-2)
 3. Writes the current recommendation to `~/.vibeads/current-recommendation.json` for the status line
@@ -471,14 +459,14 @@ function handlePostToolUse(hookInput) {
       company: match,
       trigger: `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`,
       timestamp: new Date().toISOString(),
-    })
+    }),
   );
 
   // Record impression
   recordImpression(
     match.slug,
     "post-tool",
-    `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`
+    `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`,
   );
 
   // Tier 4: Return additionalContext so Claude can mention the tool
@@ -518,6 +506,7 @@ git commit -m "feat: add PostToolUse hook with keyword matching and context inje
 ### Task 6: SessionStart Hook — Stack Analysis (Tier 5)
 
 **Files:**
+
 - Create: `src/hooks/session-start.js`
 
 **Step 1: Create SessionStart hook script**
@@ -525,6 +514,7 @@ git commit -m "feat: add PostToolUse hook with keyword matching and context inje
 Create `src/hooks/session-start.js`:
 
 On session start, this script:
+
 1. Reads `package.json` from the project directory
 2. Scans for common config files (`.env`, `prisma/schema.prisma`, `docker-compose.yml`, etc.)
 3. Builds a tech stack profile
@@ -567,29 +557,22 @@ function handleSessionStart(hookInput) {
   }
 
   // Save stack profile
-  writeFileSync(
-    join(VIBEADS_DIR, "stack-profile.json"),
-    JSON.stringify(stackProfile, null, 2)
-  );
+  writeFileSync(join(VIBEADS_DIR, "stack-profile.json"), JSON.stringify(stackProfile, null, 2));
 
   // Generate recommendations based on stack gaps
   const recommendations = generateRecommendations(stackProfile);
 
   if (recommendations.length > 0) {
     // SessionStart stdout is injected into Claude's context
-    const contextLines = [
-      "[vibeads] Tech stack analysis for this project:",
-    ];
+    const contextLines = ["[vibeads] Tech stack analysis for this project:"];
 
     for (const rec of recommendations.slice(0, 3)) {
       contextLines.push(
-        `  - ${rec.type}: ${rec.message} (${rec.company.name}, a16z${rec.company.speedrun ? " Speedrun" : ""}: ${rec.company.website}?ref=vibeads)`
+        `  - ${rec.type}: ${rec.message} (${rec.company.name}, a16z${rec.company.speedrun ? " Speedrun" : ""}: ${rec.company.website}?ref=vibeads)`,
       );
     }
 
-    contextLines.push(
-      "  Mention these only when directly relevant. Do not force recommendations."
-    );
+    contextLines.push("  Mention these only when directly relevant. Do not force recommendations.");
 
     console.log(contextLines.join("\n"));
   }
@@ -644,36 +627,25 @@ function analyzeStack(cwd) {
 
   // Detect from dependencies
   const deps = Object.keys(profile.dependencies);
-  if (deps.some((d) => d.includes("supabase")))
-    profile.detectedTools.baas = "supabase";
-  if (deps.some((d) => d.includes("firebase")))
-    profile.detectedTools.baas = "firebase";
+  if (deps.some((d) => d.includes("supabase"))) profile.detectedTools.baas = "supabase";
+  if (deps.some((d) => d.includes("firebase"))) profile.detectedTools.baas = "firebase";
   if (deps.includes("next-auth") || deps.includes("@auth/core"))
     profile.detectedTools.auth = "next-auth";
   if (deps.includes("@clerk/nextjs") || deps.includes("@clerk/clerk-sdk-node"))
     profile.detectedTools.auth = "clerk";
   if (deps.includes("stripe") || deps.includes("@stripe/stripe-js"))
     profile.detectedTools.payments = "stripe";
-  if (deps.includes("pg") || deps.includes("mysql2"))
-    profile.detectedTools.database = "raw-sql";
+  if (deps.includes("pg") || deps.includes("mysql2")) profile.detectedTools.database = "raw-sql";
   if (deps.includes("mongoose") || deps.includes("mongodb"))
     profile.detectedTools.database = "mongodb";
 
   // Identify gaps
   if (!profile.detectedTools.auth) profile.gaps.push("auth");
-  if (!profile.detectedTools.database && !profile.detectedTools.baas)
-    profile.gaps.push("database");
+  if (!profile.detectedTools.database && !profile.detectedTools.baas) profile.gaps.push("database");
   if (!profile.detectedTools.payments) profile.gaps.push("payments");
   if (!deps.some((d) => d.includes("sentry") || d.includes("datadog")))
     profile.gaps.push("monitoring");
-  if (
-    !deps.some(
-      (d) =>
-        d.includes("rate-limit") ||
-        d.includes("helmet") ||
-        d.includes("arcjet")
-    )
-  )
+  if (!deps.some((d) => d.includes("rate-limit") || d.includes("helmet") || d.includes("arcjet")))
     profile.gaps.push("security");
 
   return profile;
@@ -702,8 +674,7 @@ function generateRecommendations(profile) {
         website: "https://www.pagerduty.com",
       },
       type: "missing",
-      message:
-        "No monitoring detected. PagerDuty free tier covers 5 users for incident management",
+      message: "No monitoring detected. PagerDuty free tier covers 5 users for incident management",
     },
     security: {
       company: {
@@ -713,8 +684,7 @@ function generateRecommendations(profile) {
         website: "https://arcjet.com",
       },
       type: "missing",
-      message:
-        "No rate limiting or bot protection. Arcjet adds security middleware in 3 lines",
+      message: "No rate limiting or bot protection. Arcjet adds security middleware in 3 lines",
     },
   };
 
@@ -788,6 +758,7 @@ git commit -m "feat: add SessionStart hook with tech stack analysis and gap dete
 ### Task 7: Installer (npx vibeads init)
 
 **Files:**
+
 - Create: `src/install.js`
 - Create: `src/uninstall.js`
 
@@ -858,9 +829,7 @@ export async function init() {
   // PostToolUse hook
   if (!settings.hooks.PostToolUse) settings.hooks.PostToolUse = [];
   // Remove any existing vibeads hooks first
-  settings.hooks.PostToolUse = settings.hooks.PostToolUse.filter(
-    (h) => !isVibeadsHook(h)
-  );
+  settings.hooks.PostToolUse = settings.hooks.PostToolUse.filter((h) => !isVibeadsHook(h));
   settings.hooks.PostToolUse.push({
     matcher: "Bash|Write|Edit|Read",
     hooks: [
@@ -875,9 +844,7 @@ export async function init() {
 
   // SessionStart hook
   if (!settings.hooks.SessionStart) settings.hooks.SessionStart = [];
-  settings.hooks.SessionStart = settings.hooks.SessionStart.filter(
-    (h) => !isVibeadsHook(h)
-  );
+  settings.hooks.SessionStart = settings.hooks.SessionStart.filter((h) => !isVibeadsHook(h));
   settings.hooks.SessionStart.push({
     matcher: "startup|resume",
     hooks: [
@@ -919,7 +886,7 @@ export async function init() {
   if (!existsSync(join(VIBEADS_DIR, "impressions.json"))) {
     writeFileSync(
       join(VIBEADS_DIR, "impressions.json"),
-      JSON.stringify({ impressions: [], stats: {} }, null, 2)
+      JSON.stringify({ impressions: [], stats: {} }, null, 2),
     );
   }
 
@@ -932,9 +899,7 @@ export async function init() {
 }
 
 function isVibeadsHook(hookGroup) {
-  return hookGroup.hooks?.some((h) =>
-    h.command?.includes(".vibeads")
-  );
+  return hookGroup.hooks?.some((h) => h.command?.includes(".vibeads"));
 }
 ```
 
@@ -961,7 +926,7 @@ export async function uninstall() {
     if (settings.hooks) {
       for (const event of Object.keys(settings.hooks)) {
         settings.hooks[event] = settings.hooks[event].filter(
-          (h) => !h.hooks?.some((hook) => hook.command?.includes(".vibeads"))
+          (h) => !h.hooks?.some((hook) => hook.command?.includes(".vibeads")),
         );
         // Clean up empty arrays
         if (settings.hooks[event].length === 0) {
@@ -1003,6 +968,7 @@ git commit -m "feat: add installer and uninstaller for Claude Code hooks"
 ### Task 8: Dashboard
 
 **Files:**
+
 - Create: `src/dashboard.js`
 
 **Step 1: Create dashboard**
@@ -1059,9 +1025,7 @@ export async function dashboard() {
   }
 
   // Show config
-  const config = JSON.parse(
-    readFileSync(join(VIBEADS_DIR, "config.json"), "utf-8")
-  );
+  const config = JSON.parse(readFileSync(join(VIBEADS_DIR, "config.json"), "utf-8"));
   const activeTiers = Object.entries(config.tiers)
     .filter(([, v]) => v)
     .map(([k]) => k);
@@ -1082,6 +1046,7 @@ git commit -m "feat: add CLI dashboard for viewing impressions and stack analysi
 ### Task 9: Portfolio Data File (Complete)
 
 **Files:**
+
 - Create: `src/data/portfolio.json`
 
 **Step 1: Create the complete portfolio data file**
@@ -1094,6 +1059,7 @@ This is the actual data file referenced by the matcher. It must include all a16z
 - `slug`, `name`, `oneLiner`, `website`, `category`, `speedrun`, `freeTier`
 
 Example entry:
+
 ```json
 {
   "slug": "clerk",
@@ -1103,7 +1069,19 @@ Example entry:
   "category": "auth",
   "speedrun": false,
   "freeTier": "Free up to 10,000 monthly active users",
-  "keywords": ["auth", "login", "signup", "session", "jwt", "oauth", "next-auth", "passport", "lucia", "authentication", "clerk"],
+  "keywords": [
+    "auth",
+    "login",
+    "signup",
+    "session",
+    "jwt",
+    "oauth",
+    "next-auth",
+    "passport",
+    "lucia",
+    "authentication",
+    "clerk"
+  ],
   "spinnerCopy": "next-auth: 200+ lines of config. Clerk: 5 lines. Free up to 10K MAU.",
   "statusLineCopy": "Clerk (a16z) -- Drop-in auth for React/Next.js. 5 lines of code. Free up to 10K monthly active users."
 }
@@ -1123,6 +1101,7 @@ git commit -m "feat: add complete a16z portfolio data with keywords and persuasi
 ### Task 10: Fix Import Paths for Installed Hooks
 
 **Files:**
+
 - Modify: `src/hooks/post-tool.js`
 - Modify: `src/hooks/session-start.js`
 
@@ -1131,11 +1110,14 @@ git commit -m "feat: add complete a16z portfolio data with keywords and persuasi
 The hook scripts run from `~/.vibeads/hooks/` after installation, NOT from the npm package directory. The imports need to use relative paths that work from `~/.vibeads/hooks/`:
 
 In `post-tool.js`, change:
+
 ```javascript
 import { matchKeyword } from "../matcher/keyword.js";
 import { recordImpression } from "../tracker/impressions.js";
 ```
+
 to:
+
 ```javascript
 import { matchKeyword } from "../src/matcher/keyword.js";
 import { recordImpression } from "../src/tracker/impressions.js";
@@ -1155,6 +1137,7 @@ git commit -m "fix: correct import paths for installed hook scripts"
 ### Task 11: End-to-End Testing
 
 **Files:**
+
 - None (testing existing code)
 
 **Step 1: Link the package locally**
@@ -1166,6 +1149,7 @@ Run: `npm link`
 Run: `npx vibeads init`
 
 Expected output:
+
 ```
 vibeads -- contextual dev tool discovery for Claude Code
 Powered by a16z portfolio
@@ -1214,11 +1198,13 @@ git commit -m "fix: address issues found during end-to-end testing"
 ### Task 12: README and Publishing Prep
 
 **Files:**
+
 - Create: `README.md`
 
 **Step 1: Write README**
 
 Create a README.md with:
+
 - Project name and one-liner
 - What it does (with terminal screenshot mockup using code blocks)
 - Installation: `npx vibeads init`
@@ -1243,11 +1229,13 @@ git push origin main
 ### Task 13: Final Polish and Demo Prep
 
 **Files:**
+
 - Various small fixes
 
 **Step 1: Re-install and test the full flow**
 
 Run `npx vibeads init`, then start a Claude Code session in a project with a `package.json`. Verify:
+
 - Status line shows recommendations
 - Spinner messages appear during tool use
 - Dashboard shows impressions accumulating
