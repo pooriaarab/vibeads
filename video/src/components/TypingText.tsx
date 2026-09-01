@@ -58,11 +58,7 @@ export const TypingText: React.FC<{
       }}
     >
       {displayText}
-      <TypingCursor
-        showCursor={showCursor}
-        isDone={isDone}
-        cursorVisible={cursorVisible}
-      />
+      <TypingCursor showCursor={showCursor} isDone={isDone} cursorVisible={cursorVisible} />
     </span>
   );
 };

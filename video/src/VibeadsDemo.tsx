@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  AbsoluteFill,
-  Audio,
-  Sequence,
-  staticFile,
-  useCurrentFrame,
-} from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { SceneClose } from "./scenes/SceneClose";
 import { SceneDeadSpace } from "./scenes/SceneDeadSpace";
 import { SceneHook } from "./scenes/SceneHook";

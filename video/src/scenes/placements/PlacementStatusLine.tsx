@@ -11,12 +11,9 @@ export const PlacementStatusLine: React.FC<{
   placementDuration: number;
 }> = ({ localFrame, placementDuration }) => {
   const lf = localFrame - placementDuration;
-  const o = interpolate(
-    lf,
-    [0, 5, placementDuration - 5, placementDuration],
-    [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
-  );
+  const o = interpolate(lf, [0, 5, placementDuration - 5, placementDuration], [0, 1, 1, 0], {
+    extrapolateRight: "clamp",
+  });
   return (
     <PlacementFrame o={o}>
       <Terminal
@@ -25,9 +22,7 @@ export const PlacementStatusLine: React.FC<{
         statusLine="Groq (a16z) \u2014 50x faster LLM inference. Free tier available.  https://groq.com"
         statusLineGlow
       >
-        <div style={{ color: DIM, fontSize: 18 }}>
-          Analyzing API response times...
-        </div>
+        <div style={{ color: DIM, fontSize: 18 }}>Analyzing API response times...</div>
         <div style={{ height: 20 }} />
         <Spinner text="Checking dependencies..." frame={lf} color={DIM} />
       </Terminal>

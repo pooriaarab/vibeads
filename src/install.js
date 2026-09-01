@@ -76,9 +76,7 @@ function readClaudeSettings() {
 function replaceVibeadsHook(settings, event, entry) {
   if (!settings.hooks) settings.hooks = {};
   if (!settings.hooks[event]) settings.hooks[event] = [];
-  settings.hooks[event] = settings.hooks[event].filter(
-    (h) => !isVibeadsHook(h)
-  );
+  settings.hooks[event] = settings.hooks[event].filter((h) => !isVibeadsHook(h));
   settings.hooks[event].push(entry);
 }
 
@@ -122,7 +120,7 @@ function patchSpinnerVerbs(settings) {
   if (settings.spinnerVerbs) {
     writeFileSync(
       join(VIBEADS_DIR, "original-spinner-verbs.json"),
-      JSON.stringify(settings.spinnerVerbs)
+      JSON.stringify(settings.spinnerVerbs),
     );
   }
   settings.spinnerVerbs = {
@@ -154,13 +152,11 @@ function writeVibeadsConfig() {
   if (!existsSync(join(VIBEADS_DIR, "impressions.json"))) {
     writeFileSync(
       join(VIBEADS_DIR, "impressions.json"),
-      JSON.stringify({ impressions: [], stats: {} }, null, 2)
+      JSON.stringify({ impressions: [], stats: {} }, null, 2),
     );
   }
 }
 
 function isVibeadsHook(hookGroup) {
-  return hookGroup.hooks?.some((h) =>
-    h.command?.includes(".vibeads")
-  );
+  return hookGroup.hooks?.some((h) => h.command?.includes(".vibeads"));
 }

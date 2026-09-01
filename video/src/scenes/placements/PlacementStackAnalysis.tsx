@@ -9,11 +9,7 @@ const StackWarning: React.FC<{
   opacity: number;
   children: React.ReactNode;
 }> = ({ opacity, children }) => {
-  return (
-    <div style={{ color: ORANGE, opacity }}>
-      {children}
-    </div>
-  );
+  return <div style={{ color: ORANGE, opacity }}>{children}</div>;
 };
 
 // The three "missing from your stack" lines, in the order they fade in.
@@ -42,12 +38,9 @@ export const PlacementStackAnalysis: React.FC<{
   placementDuration: number;
 }> = ({ localFrame, placementDuration }) => {
   const lf = localFrame - placementDuration * 3;
-  const o = interpolate(
-    lf,
-    [0, 5, placementDuration - 5, placementDuration],
-    [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
-  );
+  const o = interpolate(lf, [0, 5, placementDuration - 5, placementDuration], [0, 1, 1, 0], {
+    extrapolateRight: "clamp",
+  });
   return (
     <PlacementFrame o={o}>
       <Terminal scale={0.85}>
@@ -80,11 +73,7 @@ export const PlacementStackAnalysis: React.FC<{
           ))}
         </div>
       </Terminal>
-      <Label
-        text="Stack Analysis"
-        frame={lf}
-        startFrame={8}
-      />
+      <Label text="Stack Analysis" frame={lf} startFrame={8} />
     </PlacementFrame>
   );
 };

@@ -43,24 +43,17 @@ export const DotGrid: React.FC<{
   const cols = Math.ceil(Math.sqrt(count * 2));
   const rows = Math.ceil(count / cols);
   const visibleDots = Math.min(
-    Math.floor(interpolate(elapsed, [0, 40], [0, count], {
-      extrapolateRight: "clamp",
-    })),
-    count
+    Math.floor(
+      interpolate(elapsed, [0, 40], [0, count], {
+        extrapolateRight: "clamp",
+      }),
+    ),
+    count,
   );
 
   const dots: React.ReactNode[] = [];
   for (let i = 0; i < visibleDots; i++) {
-    dots.push(
-      <GridDot
-        key={i}
-        i={i}
-        cols={cols}
-        elapsed={elapsed}
-        count={count}
-        color={color}
-      />
-    );
+    dots.push(<GridDot key={i} i={i} cols={cols} elapsed={elapsed} count={count} color={color} />);
   }
 
   return (

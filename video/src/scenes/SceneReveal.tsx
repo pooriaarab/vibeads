@@ -28,9 +28,7 @@ const RevealTerminal: React.FC<{
         <span style={{ color: WHITE }}>build me an app</span>
       </div>
       <div style={{ height: 20 }} />
-      <div style={{ color: DIM, fontSize: 18, marginBottom: 16 }}>
-        Claude is working...
-      </div>
+      <div style={{ color: DIM, fontSize: 18, marginBottom: 16 }}>Claude is working...</div>
       <div style={{ opacity: spinnerReveal }}>
         <HighlightBox color={CYAN} frame={localFrame}>
           <Spinner

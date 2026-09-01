@@ -11,38 +11,20 @@ const PlacementContent: React.FC<{
   placementDuration: number;
 }> = ({ localFrame, placementDuration }) => {
   if (localFrame < placementDuration) {
-    return (
-      <PlacementSpinnerVerbs
-        localFrame={localFrame}
-        placementDuration={placementDuration}
-      />
-    );
+    return <PlacementSpinnerVerbs localFrame={localFrame} placementDuration={placementDuration} />;
   }
 
   if (localFrame < placementDuration * 2) {
-    return (
-      <PlacementStatusLine
-        localFrame={localFrame}
-        placementDuration={placementDuration}
-      />
-    );
+    return <PlacementStatusLine localFrame={localFrame} placementDuration={placementDuration} />;
   }
 
   if (localFrame < placementDuration * 3) {
     return (
-      <PlacementContextInjection
-        localFrame={localFrame}
-        placementDuration={placementDuration}
-      />
+      <PlacementContextInjection localFrame={localFrame} placementDuration={placementDuration} />
     );
   }
 
-  return (
-    <PlacementStackAnalysis
-      localFrame={localFrame}
-      placementDuration={placementDuration}
-    />
-  );
+  return <PlacementStackAnalysis localFrame={localFrame} placementDuration={placementDuration} />;
 };
 
 export const ScenePlacements: React.FC<{ frame: number }> = ({ frame }) => {
@@ -58,10 +40,7 @@ export const ScenePlacements: React.FC<{ frame: number }> = ({ frame }) => {
         justifyContent: "center",
       }}
     >
-      <PlacementContent
-        localFrame={localFrame}
-        placementDuration={placementDuration}
-      />
+      <PlacementContent localFrame={localFrame} placementDuration={placementDuration} />
     </AbsoluteFill>
   );
 };
