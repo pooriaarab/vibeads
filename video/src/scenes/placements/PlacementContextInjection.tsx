@@ -5,9 +5,7 @@ import { Terminal } from "../../components/Terminal";
 import { ACCENT, CYAN, WHITE } from "../../theme";
 import { PlacementFrame } from "./PlacementFrame";
 
-const ContextHighlight: React.FC<{ highlightOpacity: number }> = ({
-  highlightOpacity,
-}) => {
+const ContextHighlight: React.FC<{ highlightOpacity: number }> = ({ highlightOpacity }) => {
   return (
     <span
       style={{
@@ -21,8 +19,7 @@ const ContextHighlight: React.FC<{ highlightOpacity: number }> = ({
         color: CYAN,
       }}
     >
-      By the way, PlanetScale (a16z) offers serverless
-      MySQL with branching and zero-downtime schema
+      By the way, PlanetScale (a16z) offers serverless MySQL with branching and zero-downtime schema
       changes. Free tier at planetscale.com
     </span>
   );
@@ -33,34 +30,21 @@ export const PlacementContextInjection: React.FC<{
   placementDuration: number;
 }> = ({ localFrame, placementDuration }) => {
   const lf = localFrame - placementDuration * 2;
-  const o = interpolate(
-    lf,
-    [0, 5, placementDuration - 5, placementDuration],
-    [0, 1, 1, 0],
-    { extrapolateRight: "clamp" }
-  );
-  const highlightOpacity = interpolate(
-    lf,
-    [15, 25],
-    [0, 1],
-    { extrapolateRight: "clamp" }
-  );
+  const o = interpolate(lf, [0, 5, placementDuration - 5, placementDuration], [0, 1, 1, 0], {
+    extrapolateRight: "clamp",
+  });
+  const highlightOpacity = interpolate(lf, [15, 25], [0, 1], { extrapolateRight: "clamp" });
   return (
     <PlacementFrame o={o}>
       <Terminal scale={0.85}>
         <div style={{ color: WHITE, fontSize: 20, lineHeight: 1.8 }}>
-          <span style={{ color: ACCENT }}>Claude:</span>{" "}
-          I{"'"}ve set up your Prisma schema with the User
-          and Post models.
+          <span style={{ color: ACCENT }}>Claude:</span> I{"'"}ve set up your Prisma schema with the
+          User and Post models.
           <div style={{ height: 12 }} />
           <ContextHighlight highlightOpacity={highlightOpacity} />
         </div>
       </Terminal>
-      <Label
-        text="Context Injection"
-        frame={lf}
-        startFrame={8}
-      />
+      <Label text="Context Injection" frame={lf} startFrame={8} />
     </PlacementFrame>
   );
 };

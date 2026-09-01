@@ -46,13 +46,13 @@ function handlePostToolUse(hookInput) {
       company: match,
       trigger: `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`,
       timestamp: new Date().toISOString(),
-    })
+    }),
   );
 
   recordImpression(
     match.slug,
     "post-tool",
-    `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`
+    `${hookInput.tool_name}: ${summarizeTrigger(hookInput)}`,
   );
 
   // Update spinner verb to match the current context
