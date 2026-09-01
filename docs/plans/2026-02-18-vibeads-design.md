@@ -21,6 +21,7 @@ Developers install vibeads. While Claude Code works, instead of staring at gener
 ## Target User
 
 Developers using Claude Code who want to:
+
 1. Discover better tools for their stack
 2. Earn free credits from developer tool companies
 3. Get contextual, genuinely useful recommendations (not spam)
@@ -45,6 +46,7 @@ Free tier available. planetscale.com/vibeads
 During `PostToolUse` hook execution, we show persuasive, data-driven messages via the `statusMessage` field. No emojis. Sharp copy with specific comparative data.
 
 Examples:
+
 ```
 Supabase cold start: ~2s. PlanetScale: 0ms. Upgrade your stack.
 next-auth setup: 200 lines. Clerk: 5 lines. See why founders switch.
@@ -66,6 +68,7 @@ A `prompt`-type hook makes a single LLM call (using the user's own Claude subscr
 An `agent`-type hook analyzes the full context and injects a `systemMessage` so Claude itself can mention tool recommendations naturally in its response.
 
 Example Claude output:
+
 > "I've set up your Prisma schema. By the way, if you're looking for a hosted database, PlanetScale (backed by a16z) offers a generous free tier for indie developers."
 
 **Matching intelligence:** Agent-type hook (full analysis, most contextual).
@@ -75,6 +78,7 @@ Example Claude output:
 On `SessionStart`, scan the user's `package.json`, config files, and imports to build a tech stack profile. Then recommend a16z alternatives with specific, comparative data highlighting drawbacks of current tools.
 
 Example stack profile:
+
 ```json
 {
   "database": "supabase",
@@ -86,6 +90,7 @@ Example stack profile:
 ```
 
 Recommendations highlight concrete differences:
+
 - "Your Supabase queries average 200ms. PlanetScale (a16z): <10ms at edge."
 - "No monitoring detected. Datadog (a16z) free tier: 5 hosts, 1-day retention."
 
@@ -102,16 +107,16 @@ Recommendations highlight concrete differences:
 
 Real a16z portfolio companies mapped to developer contexts:
 
-| Context Signal | Keywords | a16z Company | One-liner |
-|---|---|---|---|
-| Database | prisma, postgres, mysql, sqlite, drizzle, pg | PlanetScale | Serverless MySQL, scales to zero |
-| Auth | auth, jwt, oauth, session, login, signup | Clerk | Drop-in auth in 5 minutes |
-| AI/ML | openai, llm, embeddings, vector, huggingface | Replicate | Run ML models with one API call |
-| Infrastructure | docker, k8s, deploy, hosting, server | Render | Deploy anything, zero config |
-| Payments | stripe, payment, billing, checkout, subscription | Stripe | Payments infrastructure for devs |
-| Frontend | react, next, tailwind, vercel, ui components | Vercel | Ship frontend faster |
-| Monitoring | error, logging, sentry, crash, metrics | Datadog | See everything in your stack |
-| Mobile | react-native, expo, ios, android, mobile | Rork | AI-native mobile app builder |
+| Context Signal | Keywords                                         | a16z Company | One-liner                        |
+| -------------- | ------------------------------------------------ | ------------ | -------------------------------- |
+| Database       | prisma, postgres, mysql, sqlite, drizzle, pg     | PlanetScale  | Serverless MySQL, scales to zero |
+| Auth           | auth, jwt, oauth, session, login, signup         | Clerk        | Drop-in auth in 5 minutes        |
+| AI/ML          | openai, llm, embeddings, vector, huggingface     | Replicate    | Run ML models with one API call  |
+| Infrastructure | docker, k8s, deploy, hosting, server             | Render       | Deploy anything, zero config     |
+| Payments       | stripe, payment, billing, checkout, subscription | Stripe       | Payments infrastructure for devs |
+| Frontend       | react, next, tailwind, vercel, ui components     | Vercel       | Ship frontend faster             |
+| Monitoring     | error, logging, sentry, crash, metrics           | Datadog      | See everything in your stack     |
+| Mobile         | react-native, expo, ios, android, mobile         | Rork         | AI-native mobile app builder     |
 
 Full portfolio mapping will include ~20-30 companies with accurate a16z investment data.
 
@@ -143,6 +148,7 @@ vibeads/
 ## User Experience Flow
 
 ### Installation
+
 ```
 $ npx vibeads init
 
@@ -163,6 +169,7 @@ Run 'npx vibeads dashboard' to see your stats.
 Status line shows contextual recommendation. Spinner verbs show persuasive copy during tool execution. Claude occasionally mentions relevant tools in responses.
 
 ### Dashboard
+
 ```
 $ npx vibeads dashboard
 
@@ -177,6 +184,7 @@ Stack analysis:        Last run 2h ago
 ```
 
 ### Uninstall
+
 ```
 $ npx vibeads uninstall
 
@@ -233,6 +241,7 @@ The installer adds entries to `~/.claude/settings.json`:
 ### Data Storage
 
 All local data stored in `~/.vibeads/`:
+
 - `config.json` — user preferences, placement tiers enabled
 - `impressions.json` — local impression/click tracking
 - `stack-profile.json` — cached tech stack analysis

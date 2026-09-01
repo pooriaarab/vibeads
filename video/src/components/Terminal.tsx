@@ -55,9 +55,7 @@ const TerminalStatusLine: React.FC<{
         fontFamily: "'SF Mono', 'Fira Code', monospace",
         fontSize: 14,
         color: statusLineGlow ? CYAN : GRAY,
-        textShadow: statusLineGlow
-          ? `0 0 10px ${CYAN}40, 0 0 20px ${CYAN}20`
-          : "none",
+        textShadow: statusLineGlow ? `0 0 10px ${CYAN}40, 0 0 20px ${CYAN}20` : "none",
         transition: "all 0.3s",
       }}
     >
@@ -66,9 +64,7 @@ const TerminalStatusLine: React.FC<{
   );
 };
 
-const TerminalBody: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+const TerminalBody: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div
       style={{
@@ -93,13 +89,7 @@ export const Terminal: React.FC<{
   statusLine?: string;
   showStatusLine?: boolean;
   statusLineGlow?: boolean;
-}> = ({
-  children,
-  scale = 1,
-  statusLine,
-  showStatusLine = false,
-  statusLineGlow = false,
-}) => {
+}> = ({ children, scale = 1, statusLine, showStatusLine = false, statusLineGlow = false }) => {
   return (
     <div
       style={{
@@ -115,10 +105,7 @@ export const Terminal: React.FC<{
       <TerminalTitleBar />
       <TerminalBody>{children}</TerminalBody>
       {showStatusLine && (
-        <TerminalStatusLine
-          statusLine={statusLine}
-          statusLineGlow={statusLineGlow}
-        />
+        <TerminalStatusLine statusLine={statusLine} statusLineGlow={statusLineGlow} />
       )}
     </div>
   );

@@ -12,22 +12,12 @@ const WaitHighlight: React.FC<{
 }> = ({ localFrame, currentSpinner }) => {
   return (
     <HighlightBox
-      color={`${ORANGE}${Math.floor(
-        interpolate(
-          Math.sin(localFrame * 0.08),
-          [-1, 1],
-          [30, 80]
-        )
-      )
+      color={`${ORANGE}${Math.floor(interpolate(Math.sin(localFrame * 0.08), [-1, 1], [30, 80]))
         .toString(16)
         .padStart(2, "0")}`}
       frame={localFrame}
     >
-      <Spinner
-        text={currentSpinner}
-        frame={localFrame}
-        color={DIM}
-      />
+      <Spinner text={currentSpinner} frame={localFrame} color={DIM} />
     </HighlightBox>
   );
 };
@@ -39,15 +29,8 @@ export const SceneWait: React.FC<{ frame: number }> = ({ frame }) => {
     extrapolateRight: "clamp",
   });
 
-  const spinnerTexts = [
-    "Thinking...",
-    "Reading files...",
-    "Analyzing codebase...",
-  ];
-  const currentSpinner =
-    spinnerTexts[
-      Math.floor(localFrame / 40) % spinnerTexts.length
-    ];
+  const spinnerTexts = ["Thinking...", "Reading files...", "Analyzing codebase..."];
+  const currentSpinner = spinnerTexts[Math.floor(localFrame / 40) % spinnerTexts.length];
 
   return (
     <AbsoluteFill
@@ -64,13 +47,8 @@ export const SceneWait: React.FC<{ frame: number }> = ({ frame }) => {
           <span style={{ color: WHITE }}>build me an app</span>
         </div>
         <div style={{ height: 20 }} />
-        <div style={{ color: DIM, fontSize: 18, marginBottom: 16 }}>
-          Claude is working...
-        </div>
-        <WaitHighlight
-          localFrame={localFrame}
-          currentSpinner={currentSpinner}
-        />
+        <div style={{ color: DIM, fontSize: 18, marginBottom: 16 }}>Claude is working...</div>
+        <WaitHighlight localFrame={localFrame} currentSpinner={currentSpinner} />
       </Terminal>
     </AbsoluteFill>
   );

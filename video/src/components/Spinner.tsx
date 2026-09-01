@@ -16,9 +16,7 @@ export const Spinner: React.FC<{
         display: "flex",
         alignItems: "center",
         gap: 12,
-        textShadow: glowing
-          ? `0 0 15px ${color}60, 0 0 30px ${color}30`
-          : "none",
+        textShadow: glowing ? `0 0 15px ${color}60, 0 0 30px ${color}30` : "none",
       }}
     >
       <span style={{ color, fontSize: 24 }}>{spinChars[idx]}</span>

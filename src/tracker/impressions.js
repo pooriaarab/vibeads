@@ -38,8 +38,7 @@ export function recordImpression(companySlug, tier, context) {
     data.stats[companySlug] = { total: 0, byTier: {}, firstSeen: impression.timestamp };
   }
   data.stats[companySlug].total++;
-  data.stats[companySlug].byTier[tier] =
-    (data.stats[companySlug].byTier[tier] || 0) + 1;
+  data.stats[companySlug].byTier[tier] = (data.stats[companySlug].byTier[tier] || 0) + 1;
   data.stats[companySlug].lastSeen = impression.timestamp;
 
   saveImpressions(data);
@@ -49,9 +48,7 @@ export function getStats() {
   const data = loadImpressions();
   const today = new Date().toISOString().slice(0, 10);
 
-  const todayImpressions = data.impressions.filter((i) =>
-    i.timestamp.startsWith(today)
-  );
+  const todayImpressions = data.impressions.filter((i) => i.timestamp.startsWith(today));
 
   const uniqueCompanies = new Set(data.impressions.map((i) => i.company));
 
