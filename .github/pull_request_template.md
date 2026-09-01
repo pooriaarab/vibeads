@@ -14,9 +14,8 @@ Closes #
      both fail the check, because neither tells a reviewer anything. Delete this comment. -->
 
 ```text
-npm install                                                    ->
-find bin src -name "*.js" -print0 | xargs -0 -n1 node --check  ->
-npm pack --dry-run                                             ->
+bun test      ->
+bun run build ->
 ```
 
 Assisted-by: <agent>:<model>
@@ -24,6 +23,5 @@ Assisted-by: <agent>:<model>
 <!--
   One issue. One PR. One concern. Under 500 counted lines.
   Lockfiles, build output, snapshots, and migrations do not count against the cap.
-  If the change genuinely cannot be split, say why here and ask for the
-  `oversized-approved` label. Do not add the label yourself.
+  There is no label that clears the cap. Split the change.
 -->
