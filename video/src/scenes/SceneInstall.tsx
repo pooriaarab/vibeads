@@ -20,8 +20,7 @@ const InstallResults: React.FC<{
           fontSize: 20,
         }}
       >
-        vibeads {"\u2014"} contextual dev tool discovery for
-        Claude Code
+        vibeads {"\u2014"} contextual dev tool discovery for Claude Code
       </div>
       <div
         style={{
@@ -53,13 +52,7 @@ const InstallTerminal: React.FC<{
   line2Opacity: number;
   line3Opacity: number;
   line4Opacity: number;
-}> = ({
-  localFrame,
-  line1Done,
-  line2Opacity,
-  line3Opacity,
-  line4Opacity,
-}) => {
+}> = ({ localFrame, line1Done, line2Opacity, line3Opacity, line4Opacity }) => {
   return (
     <Terminal scale={1}>
       <div>

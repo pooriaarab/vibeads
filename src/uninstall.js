@@ -14,7 +14,7 @@ export async function uninstall() {
     if (settings.hooks) {
       for (const event of Object.keys(settings.hooks)) {
         settings.hooks[event] = settings.hooks[event].filter(
-          (h) => !h.hooks?.some((hook) => hook.command?.includes(".vibeads"))
+          (h) => !h.hooks?.some((hook) => hook.command?.includes(".vibeads")),
         );
         if (settings.hooks[event].length === 0) {
           delete settings.hooks[event];

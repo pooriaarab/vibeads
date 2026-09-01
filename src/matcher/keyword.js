@@ -3,9 +3,7 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const portfolio = JSON.parse(
-  readFileSync(join(__dirname, "../data/portfolio.json"), "utf-8")
-);
+const portfolio = JSON.parse(readFileSync(join(__dirname, "../data/portfolio.json"), "utf-8"));
 
 export function matchKeyword(context) {
   const text = extractSearchableText(context).toLowerCase();
@@ -41,8 +39,7 @@ function extractSearchableText(context) {
     } else {
       if (context.toolInput.command) parts.push(context.toolInput.command);
       if (context.toolInput.file_path) parts.push(context.toolInput.file_path);
-      if (context.toolInput.content)
-        parts.push(context.toolInput.content.slice(0, 500));
+      if (context.toolInput.content) parts.push(context.toolInput.content.slice(0, 500));
       if (context.toolInput.pattern) parts.push(context.toolInput.pattern);
       if (context.toolInput.query) parts.push(context.toolInput.query);
     }

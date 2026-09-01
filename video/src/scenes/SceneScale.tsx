@@ -26,26 +26,10 @@ export const SceneScale: React.FC<{ frame: number }> = ({ frame }) => {
       }}
     >
       <AbsoluteFill>
-        <ScaleDevelopers
-          localFrame={localFrame}
-          left={col1X}
-          top={row1Y}
-        />
-        <ScalePortfolio
-          localFrame={localFrame}
-          left={col2X}
-          top={row1Y}
-        />
-        <ScaleLayers
-          localFrame={localFrame}
-          left={col1X}
-          top={row2Y}
-        />
-        <ScaleZeroLines
-          localFrame={localFrame}
-          left={col2X}
-          top={row2Y}
-        />
+        <ScaleDevelopers localFrame={localFrame} left={col1X} top={row1Y} />
+        <ScalePortfolio localFrame={localFrame} left={col2X} top={row1Y} />
+        <ScaleLayers localFrame={localFrame} left={col1X} top={row2Y} />
+        <ScaleZeroLines localFrame={localFrame} left={col2X} top={row2Y} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

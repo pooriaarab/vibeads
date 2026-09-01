@@ -3,27 +3,13 @@ import { interpolate, spring } from "remotion";
 import { StatBlock, StatCaption } from "../../components/StatBlock";
 import { ACCENT, CYAN, GREEN, ORANGE } from "../../theme";
 
-const PortfolioDot: React.FC<{ i: number; localFrame: number }> = ({
-  i,
-  localFrame,
-}) => {
-  const colors = [
-    CYAN,
-    GREEN,
-    ACCENT,
-    ORANGE,
-    "#f778ba",
-  ];
+const PortfolioDot: React.FC<{ i: number; localFrame: number }> = ({ i, localFrame }) => {
+  const colors = [CYAN, GREEN, ACCENT, ORANGE, "#f778ba"];
   const delay = i * 2;
-  const dotOpacity = interpolate(
-    localFrame - delay,
-    [10, 18],
-    [0, 1],
-    {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    }
-  );
+  const dotOpacity = interpolate(localFrame - delay, [10, 18], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const dotScale = spring({
     frame: Math.max(0, localFrame - delay - 10),
     fps: 30,
