@@ -31,10 +31,7 @@ function handleSessionStart(hookInput) {
     mkdirSync(VIBEADS_DIR, { recursive: true });
   }
 
-  writeFileSync(
-    join(VIBEADS_DIR, "stack-profile.json"),
-    JSON.stringify(stackProfile, null, 2)
-  );
+  writeFileSync(join(VIBEADS_DIR, "stack-profile.json"), JSON.stringify(stackProfile, null, 2));
 
   const recommendations = generateRecommendations(stackProfile);
 
@@ -62,23 +59,19 @@ function handleSessionStart(hookInput) {
         company: fullCompany,
         trigger: `stack-analysis: ${topRec.type} - ${topRec.message}`,
         timestamp: new Date().toISOString(),
-      })
+      }),
     );
 
     // Output context for Claude
-    const contextLines = [
-      "[vibeads] Tech stack analysis for this project:",
-    ];
+    const contextLines = ["[vibeads] Tech stack analysis for this project:"];
 
     for (const rec of recommendations.slice(0, 3)) {
       contextLines.push(
-        `  - ${rec.type}: ${rec.message} (${rec.company.name}, a16z${rec.company.speedrun ? " Speedrun" : ""}: ${rec.company.website}?ref=vibeads)`
+        `  - ${rec.type}: ${rec.message} (${rec.company.name}, a16z${rec.company.speedrun ? " Speedrun" : ""}: ${rec.company.website}?ref=vibeads)`,
       );
     }
 
-    contextLines.push(
-      "  Mention these only when directly relevant. Do not force recommendations."
-    );
+    contextLines.push("  Mention these only when directly relevant. Do not force recommendations.");
 
     console.log(contextLines.join("\n"));
   }
@@ -144,18 +137,12 @@ const GAP_DETECTORS = [
   { id: "payments", detect: (_deps, tools) => !tools.payments },
   {
     id: "monitoring",
-    detect: (deps) =>
-      !deps.some((d) => d.includes("sentry") || d.includes("datadog")),
+    detect: (deps) => !deps.some((d) => d.includes("sentry") || d.includes("datadog")),
   },
   {
     id: "security",
     detect: (deps) =>
-      !deps.some(
-        (d) =>
-          d.includes("rate-limit") ||
-          d.includes("helmet") ||
-          d.includes("arcjet")
-      ),
+      !deps.some((d) => d.includes("rate-limit") || d.includes("helmet") || d.includes("arcjet")),
   },
 ];
 
@@ -216,7 +203,12 @@ const GAP_RECOMMENDATIONS = {
     message: "No auth detected. Clerk gives you drop-in auth with 10K free MAU",
   },
   monitoring: {
-    company: { name: "PagerDuty", slug: "pagerduty", speedrun: false, website: "https://www.pagerduty.com" },
+    company: {
+      name: "PagerDuty",
+      slug: "pagerduty",
+      speedrun: false,
+      website: "https://www.pagerduty.com",
+    },
     type: "missing",
     message: "No monitoring detected. PagerDuty free tier covers 5 users for incident management",
   },
@@ -234,7 +226,8 @@ const STACK_RECOMMENDATIONS = [
     recommendation: {
       company: { name: "Clerk", slug: "clerk", speedrun: false, website: "https://clerk.com" },
       type: "alternative",
-      message: "Using next-auth? Clerk replaces 200+ lines of auth config with 5 lines. Free up to 10K MAU",
+      message:
+        "Using next-auth? Clerk replaces 200+ lines of auth config with 5 lines. Free up to 10K MAU",
     },
   },
   {
@@ -244,9 +237,15 @@ const STACK_RECOMMENDATIONS = [
       deps.includes("prisma") ||
       deps.includes("drizzle-orm"),
     recommendation: {
-      company: { name: "PlanetScale", slug: "planetscale", speedrun: false, website: "https://planetscale.com" },
+      company: {
+        name: "PlanetScale",
+        slug: "planetscale",
+        speedrun: false,
+        website: "https://planetscale.com",
+      },
       type: "upgrade",
-      message: "PlanetScale: serverless MySQL with non-blocking schema changes. No more migration headaches",
+      message:
+        "PlanetScale: serverless MySQL with non-blocking schema changes. No more migration headaches",
     },
   },
   {
