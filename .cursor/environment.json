@@ -1,0 +1,12 @@
+{
+  "name": "vibeads Cloud Environment",
+  "install": "npm install",
+  "start": "echo 'Environment ready for cloud agents'",
+  "terminals": [
+    {
+      "name": "Verify",
+      "command": "npm test --if-present || npm run lint --if-present || npm run check --if-present || echo 'Add test/lint script'",
+      "description": "Run tests/lint before opening PRs"
+    }
+  ]
+}
