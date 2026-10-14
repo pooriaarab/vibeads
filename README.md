@@ -1,148 +1,194 @@
 # vibeads
 
-Contextual dev tool discovery for Claude Code -- powered by a16z portfolio.
+[![npm version](https://img.shields.io/npm/v/vibeads)](https://www.npmjs.com/package/vibeads)
+[![Downloads/month](https://img.shields.io/npm/dm/vibeads)](https://www.npmjs.com/package/vibeads)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/mit)
 
-While Claude Code works, vibeads shows you relevant a16z portfolio tools based on what you're building. No generic ads -- data-driven, comparative recommendations that actually help you ship faster.
+[Package](https://www.npmjs.com/package/vibeads) · [Setup](#send-your-first-recommendation) · [Commands](#runtime-surfaces) · [Compare](#compare)
 
-https://github.com/pooriaarab/vibeads/raw/main/video/out/vibeads-demo.mp4
+vibeads is an open-source developer-tool discovery package for Claude Code users. It matches tool activity and project signals against a bundled catalog. Recommendations appear through hooks, spinner text, and a terminal status line.
 
 ## Install
 
-```
+```bash
 npm install -g vibeads
 ```
 
-That's it. One command. The hooks and status line are automatically configured in your `~/.claude/settings.json`.
+Use Node.js with ES module support; repository CI uses Node.js 22. The package has zero runtime dependencies.
+Installation runs `vibeads init` automatically. It changes `~/.claude/settings.json` and writes files under `~/.vibeads/`.
+Back up your Claude Code settings before installation if you need to restore an existing status line.
 
-Alternatively, run without installing:
+## Send your first recommendation
 
-```
-npx vibeads init
-```
-
-## What it does
-
-vibeads watches what you're building and recommends relevant tools from the a16z portfolio across 5 placement tiers:
-
-**Tier 1: Status Line** -- Always-visible recommendation at the bottom of your terminal.
-
-```
-Clerk (a16z) -- Drop-in auth for React/Next.js. 5 lines of code. Free up to 10K MAU.
-  https://clerk.com?ref=vibeads
+```bash
+vibeads init
+vibeads dashboard
 ```
 
-**Tier 2: Spinner Verbs** -- During tool execution, sharp comparative data appears as status messages.
+No environment variables, credentials, or `.env` loading are required.
+Success prints `Ready! Start a Claude Code session to see recommendations.`
+The dashboard prints `vibeads Stats`, impression totals, and configured tiers.
+Start a Claude Code session in a project with `package.json` to trigger stack analysis.
+The status line shows a catalog company and its URL; without a recent match, it selects a random entry.
 
-```
-Matching your stack with a16z portfolio...
-```
+## How it works
 
-**Tier 3: Context Injection** -- Occasionally, Claude itself mentions a relevant tool naturally in its response (20% of matches).
-
-**Tier 4: Stack Analysis** -- On session start, vibeads scans your `package.json` and config files to identify your stack and recommend alternatives or fill gaps.
-
-```
-[vibeads] Tech stack analysis for this project:
-  - missing: No auth detected. Clerk gives you drop-in auth with 10K free MAU
-  - alternative: Using OpenAI? Groq runs Llama/Mixtral at 50x the speed
-  - missing: No rate limiting. Arcjet adds security middleware in 3 lines
-```
-
-## How matching works
-
-vibeads uses keyword matching on Claude Code hook inputs (tool names, commands, file paths, content). When you run `npm install prisma`, it matches PlanetScale. When you write auth code, it matches Clerk. 20 a16z portfolio companies mapped across databases, auth, AI, payments, monitoring, security, design, and more.
-
-Spinner copy is data-driven and comparative -- no marketing fluff:
-
-```
-next-auth: 200+ lines of config. Clerk: 5 lines. Free up to 10K MAU.
-OpenAI API: 500ms avg latency. Groq: 10ms. 50x faster LLM inference.
-DIY rate limiting: fragile + hours. Arcjet: 3 lines. Free 10K req/mo.
+```text
+Claude Code SessionStart -> project files -> stack profile -> suggestions
+Claude Code PostToolUse -> keyword match -> recommendation + local impression
+                                         -> spinner settings + occasional context
+Stored recommendation -> terminal status line
+Local impression file -> dashboard
 ```
 
-## Dashboard
+The matcher reads tool names, commands, paths, selected input fields, and the working directory.
+Matching and impression tracking make no network requests. Vendor links open external sites when you follow them.
 
+## Why it exists
+
+Claude Code supports custom status lines, and ccstatusline provides configurable session widgets.
+vibeads uses those terminal surfaces for catalog-based developer-tool suggestions.
+It also uses project dependencies and configuration filenames to suggest alternatives or flag possible stack gaps.
+
+## Compare
+
+Scope checked on 2026-10-14 against [Claude Code status lines](https://code.claude.com/docs/en/statusline) and [ccstatusline](https://github.com/sirmalloc/ccstatusline).
+
+| Scope | vibeads | Claude Code custom status line | ccstatusline |
+|---|---|---|---|
+| Main purpose | Catalog recommendations | User-defined terminal output | Configurable session widgets |
+| Configuration | Installer writes hooks and settings | Script and settings entry | Interactive configuration |
+| Runs locally | Yes | Yes | Yes |
+
+## Coverage
+
+The matcher reads 20 entries from `src/data/portfolio.json`.
+Every row below is catalog-only: no vendor API adapter, account setup, or delivery integration is included.
+
+| Catalog company | Status |
+|---|---|
+| Clerk | catalog-only |
+| PlanetScale | catalog-only |
+| Stripe | catalog-only |
+| Replicate | catalog-only |
+| Groq | catalog-only |
+| Fal.ai | catalog-only |
+| ElevenLabs | catalog-only |
+| Mistral | catalog-only |
+| Arcjet | catalog-only |
+| Rork | catalog-only |
+| Figma | catalog-only |
+| Stainless | catalog-only |
+| PagerDuty | catalog-only |
+| Hex | catalog-only |
+| Databricks | catalog-only |
+| Runware | catalog-only |
+| Flora AI | catalog-only |
+| Hedra | catalog-only |
+| Cursor | catalog-only |
+| Replit | catalog-only |
+
+Source inspection verifies the inventory. No vendor credentials or current catalog pricing claims were verified for this rewrite.
+The catalog groups these companies under an a16z label; that label does not establish an endorsement.
+
+## Common use cases
+
+1. Claude Code users: show developer-tool suggestions alongside coding activity.
+2. Next.js builders: use package dependencies and configuration filenames as recommendation signals.
+3. Prisma users: surface database catalog entries after matching commands or file activity.
+4. Tool evaluators: inspect locally recorded recommendation counts through the dashboard.
+
+## Features
+
+- **Keyword matching:** selects the highest weighted substring match from the catalog.
+- **Stack analysis:** checks dependencies and selected configuration filenames at startup or resume.
+- **Status line:** renders a recent recommendation or a random catalog fallback.
+- **Spinner text:** places the matched company's copy three times before other catalog entries.
+- **Local dashboard:** summarizes recorded matches and the latest detected stack.
+
+See [setup](#send-your-first-recommendation) and [commands](#runtime-surfaces) for usage.
+
+## Runtime surfaces
+
+| Command | Behavior |
+|---|---|
+| `vibeads init` | Copy hook files, write settings, and initialize local data |
+| `vibeads dashboard` | Print local impression and stack summaries |
+| `vibeads uninstall` | Remove vibeads hooks and local data |
+
+The package exposes one bin, `vibeads`. It has no declared library exports or Model Context Protocol (MCP) server.
+`SessionStart` matches startup and resume. `PostToolUse` matches Bash, Write, Edit, and Read.
+The installer also configures `statusLine` and `spinnerVerbs`.
+
+## Delivery and behavior limits
+
+- Initialization replaces your configured status line. Uninstall removes the vibeads status line without restoring its predecessor.
+- Existing spinner settings are saved when present. Repeated initialization can replace that backup with vibeads settings.
+- Hooks contain a fixed 20% random context-injection test. A match does not guarantee that Claude mentions the recommendation.
+- Stored tier flags and `contextInjectionRate` are not runtime controls; the hook code does not read them.
+- Stack gaps are heuristics. Five gap detectors exist, but only auth, monitoring, and security gaps have recommendation mappings.
+- Dashboard impressions count recorded post-tool matches. They do not prove views, clicks, purchases, or successful integrations.
+- Local logs include command or path summaries. Impression data has no retention limit in the implementation.
+- Catalog copy can become stale. Check vendor documentation before relying on pricing, credits, or performance statements.
+
+## Integration guides
+
+This README contains the package setup; there is no separate public documentation site.
+For host configuration details, read [Claude Code's status-line guide](https://code.claude.com/docs/en/statusline).
+
+### Uninstall
+
+```bash
+vibeads uninstall
 ```
-npx vibeads dashboard
-```
 
-```
-vibeads Stats
-----------------
-Impressions today:     47
-Total impressions:     312
-Tools discovered:      12
+This removes vibeads hook entries and deletes `~/.vibeads/`, including its impression history.
 
-Top Recommendations:
-  clerk: 89 impressions
-  planetscale: 67 impressions
-  groq: 45 impressions
+## Status
 
-Detected Stack:
-  database: prisma
-  framework: nextjs
-  auth: next-auth
+Version 0.4.0 is an early release. Interfaces and catalog content can change before 1.0.
+Public case studies are not yet published. Report problems in [GitHub issues](https://github.com/pooriaarab/vibeads/issues).
 
-Stack Gaps:        monitoring, security
+### Development and releases
 
-Active tiers:      statusLine, spinnerVerbs, systemMessage, stackAnalysis
-```
+CI checks JavaScript syntax and validates the npm package. No `ci:local` script or automated unit-test suite is defined.
+Publishing runs from version tags through the npm publish workflow and requires the repository's npm token.
+The `video/` directory contains a separate Remotion demo, not another runtime integration.
 
-## Uninstall
+## FAQ
 
-```
-npx vibeads uninstall
-```
+### Which integrations are verified?
 
-Cleanly removes all hooks from `~/.claude/settings.json` and deletes `~/.vibeads/`.
+vibeads includes Claude Code hook and status-line configuration. Its 20 companies are recommendation catalog entries; no vendor API integration is credential-verified.
 
-## a16z Portfolio Companies (20)
+### Does vibeads provide a managed advertising service?
 
-| Company     | Category     | Speedrun | What They Do                                 |
-| ----------- | ------------ | -------- | -------------------------------------------- |
-| Clerk       | Auth         |          | Drop-in auth for React/Next.js               |
-| PlanetScale | Database     |          | Serverless MySQL with branching              |
-| Stripe      | Payments     |          | Payment infrastructure for 3.1M+ businesses  |
-| Replicate   | AI Models    |          | Run open-source ML models via API            |
-| Groq        | AI Inference |          | 50x faster LLM inference via LPU chips       |
-| Fal.ai      | AI Inference |          | Sub-second image generation API              |
-| ElevenLabs  | Voice AI     |          | Human-quality AI voice in 29 languages       |
-| Mistral     | AI Models    |          | Open-weight LLMs at 70% lower cost           |
-| Arcjet      | Security     |          | Rate limiting and bot protection for Node.js |
-| Rork        | Mobile       | Yes      | AI mobile app builder for React Native       |
-| Figma       | Design       |          | Collaborative design platform                |
-| Stainless   | Dev Tools    |          | Auto-generate type-safe SDKs from OpenAPI    |
-| PagerDuty   | Monitoring   |          | Incident management and on-call alerting     |
-| Hex         | Data         |          | Collaborative SQL and Python notebooks       |
-| Databricks  | Data         |          | Unified lakehouse for ETL, analytics, and ML |
-| Runware     | AI API       |          | Fastest image generation API at scale        |
-| Flora AI    | Creative     | Yes      | AI creative design tool                      |
-| Hedra       | Video        |          | AI talking-head video generation             |
-| Cursor      | Dev Tools    |          | AI-native code editor                        |
-| Replit      | Dev Tools    |          | Cloud IDE with instant deploys               |
+vibeads runs locally and stores its own data under `~/.vibeads/`. It does not provide a hosted campaign manager or conversion service.
 
-## How it works (technical)
+### How is vibeads different from a Claude Code custom status line?
 
-vibeads is an npm package that installs Claude Code hooks:
+vibeads installs catalog matching and project-analysis hooks alongside a status-line script. [Claude Code custom status lines](https://code.claude.com/docs/en/statusline) run scripts you configure yourself.
 
-- **PostToolUse hook**: Runs after every Bash/Write/Edit/Read tool call. Keyword-matches tool input against the a16z portfolio. Writes the current recommendation to `~/.vibeads/current-recommendation.json` for the status line and records impressions.
-- **SessionStart hook**: Analyzes your project's `package.json` and config files on session start. Identifies stack gaps and suggests a16z alternatives. Output is injected into Claude's context.
-- **Status line**: Reads the latest recommendation and renders it with ANSI colors and OSC 8 clickable links.
+### How is vibeads different from ccstatusline?
 
-All data is stored locally in `~/.vibeads/`. No external API calls. No telemetry.
+vibeads focuses on developer-tool recommendations. [ccstatusline](https://github.com/sirmalloc/ccstatusline) focuses on configurable terminal widgets for session information.
 
-## Releasing
+### Does vibeads send my code to a recommendation server?
 
-CI runs on every PR/push to `main` (syntax-check + package validation). To publish
-a new version:
+vibeads makes no network requests for matching or tracking. Local impression records can contain command and file-path summaries.
 
-1. Bump `version` in `package.json`, commit, merge to `main`.
-2. `git tag vX.Y.Z && git push origin vX.Y.Z`
-3. The publish workflow builds and publishes to npm automatically (idempotent —
-   safe to rerun; skips if that version is already published).
+### Does vibeads need an API key?
 
-Requires an `NPM_TOKEN` repo secret (npm automation token with publish access).
+vibeads requires no API keys. Claude Code itself has its own installation and account requirements.
+
+### Can I control the context-injection rate through config.json?
+
+vibeads stores a rate in its configuration but the hook uses a fixed 0.2 probability. Changing that stored value does not change the hook's behavior.
+
+### Will uninstall restore my previous status line?
+
+vibeads removes its own status-line setting. It does not back up or restore the prior status line.
 
 ## License
 
-MIT
+MIT.
