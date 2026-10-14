@@ -1,14 +1,22 @@
 {
   "name": "vibeads",
   "version": "0.4.0",
-  "description": "Contextual dev tool discovery for Claude Code — powered by a16z portfolio",
+  "description": "Local developer-tool recommendations for Claude Code through keyword matching, project analysis, hooks, spinner text, and a terminal status line.",
   "keywords": [
-    "a16z",
-    "ads",
     "claude-code",
     "developer-tools",
+    "recommendations",
     "hooks",
-    "vibeads"
+    "status-line",
+    "keyword-matching",
+    "a16z",
+    "Clerk",
+    "PlanetScale",
+    "Stripe",
+    "Groq",
+    "Prisma",
+    "Next.js",
+    "local-analytics"
   ],
   "license": "MIT",
   "author": "Pooria Arab",
