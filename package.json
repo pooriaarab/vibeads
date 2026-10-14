@@ -10,12 +10,6 @@
     "status-line",
     "keyword-matching",
     "a16z",
-    "Clerk",
-    "PlanetScale",
-    "Stripe",
-    "Groq",
-    "Prisma",
-    "Next.js",
     "local-analytics"
   ],
   "license": "MIT",
